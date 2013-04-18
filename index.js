@@ -179,7 +179,7 @@ $(document).ready(function() {
 		}
 		
 		var newClass = $("<div></div>");
-		newClass.css({"position":"relative", "left":"startX, "top":"startY", "height":"yPix", "width":"xPix")
+		newClass.css({"position":"relative", "left":"startX", "top":"startY", "height":"yPix", "width":"xPix"});
 		var info = $("<p>Class ID</p>");
 		newClass.append(info);
 		$(tbody).append(newClass);	
