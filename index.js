@@ -364,13 +364,8 @@ $(document).ready(function() {
   }
 
   function addSuccess(results, a, b) {
-<<<<<<< HEAD
       classIds = [];
       removeIds = [];
-=======
-    classIds = [];
->>>>>>> 4c69cd305e5880ac2d3c8dfc8a3caa994055703b
-    alert("success");
   }
 
 
@@ -385,18 +380,12 @@ $(document).ready(function() {
           var section = result[i]["sec"];
           var classType = result[i]["type"];
           var button = $('<button>').text(shortname + "" + section + "" + classType);
-<<<<<<< HEAD
           button.attr("id", classId);
 
           button.click(function () {
               addClassToList($(this).attr("id"));
           });
 
-=======
-          button.id = myClass;
-	  
-          button.click( function() { addClassToList($(this).id); } );
->>>>>>> 4c69cd305e5880ac2d3c8dfc8a3caa994055703b
           $('#completion').append(button);
 	  i++;
       }
