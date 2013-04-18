@@ -48,6 +48,10 @@ table {
     border:3px solid #454545;
 }
 
+th {
+	width: 75px;
+}
+
 .table tr td {
     text-align:center;
     border: 0;
@@ -55,9 +59,10 @@ table {
     padding:1px;
 }
 
-.container {
-
+#chicken{
+	background-color: black;
 }
+
 
 .table th {
    text-align:center;
