@@ -53,7 +53,7 @@ $(document).ready(function() {
     
     function hideRows() {
 		var x = $("tbody").children().slice(0,90);
-		var y = $("tbody").children().slice(210,287);
+		var y = $("tbody").children().slice(210,288);
 		x.each(function(index){
 		    $(this).css("display","none");
 		});
