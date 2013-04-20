@@ -92,6 +92,13 @@ $(document).ready(function() {
 	alert(msg);
     }
 
+    function addOther(startDay, startTime, endDay, endTime) {
+    	for (var i = startDay; i <= endDay; i++) {
+    		for (var j = startTime; j <= endTime; j++) {
+    			$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+    		}
+    	}
+    }
 
     $("tbody").mousedown(function(e) {
         startX = e.pageX - this.offsetLeft;
@@ -113,13 +120,12 @@ $(document).ready(function() {
        }
        
        //time
-       //alert(this.offsetTop + " and the actual point " + e.pageY);
-       //alert("StartY: " + startY + "\nEndY: " + endY);
-       var startRow = Math.floor(parseFloat(startY / 5));
-       var endRow = Math.floor(parseFloat(endY / 5));
+       var startRow = Math.floor(parseFloat(startY / 5)) + 90;
+       var endRow = Math.floor(parseFloat(endY / 5)) + 90;
 
        alert("Starting Col(Days):" + startCol + "\nEnding Col:" + endCol);
        alert("Strating Row(Time):" + startRow + "\nEnding Row:" + endRow);
+       addOther(startCol, startRow, endCol, endRow);
     });
 
     $("#class-search").keyup(function() {
