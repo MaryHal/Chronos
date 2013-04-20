@@ -15,7 +15,18 @@ $(document).ready(function() {
     buildTable();
     hideRows();
     testAjax();
-    
+
+    /*
+      var request = $.ajax({
+         url: "http://theinfiniteset.net/Chronos/Search.php",
+         type: "get",
+          dataType : "json",
+         data: {"query" : query},
+      });
+     request.done(keySuccess);
+     request.fail(keyError);
+     */
+   
     
     function buildTable() {
 		for(var i = 0; i < 48 * 6; i++ ){
@@ -178,8 +189,6 @@ $(document).ready(function() {
            data : {"query" : query},
 	       });
          */
-      alert('here');
-
     });
 
 
@@ -188,7 +197,6 @@ $(document).ready(function() {
   }
 
   function keyError(jqxhr, type, error) {
-    alert('I AM ERROR');
     var msg = 0;
 if (type == 'error') {
 	    if (jqxhr.readyState == 0) {
@@ -207,7 +215,6 @@ if (type == 'error') {
 	    }
 	}
 	alert(msg);
-	alert("aosenuht");
   }
 });
 
