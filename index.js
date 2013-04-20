@@ -22,7 +22,7 @@ $(document).ready(function() {
 		    var new_row = $("<tr id=time" + i + ">");
 		    
 		    var offset = 0;
-			if (i % 6 == 0) {
+			if (i % 6 != 0) {
 				offset = 1;
 			} else {
 				offset = 0;
