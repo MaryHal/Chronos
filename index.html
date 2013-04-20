@@ -23,6 +23,106 @@
 
 
       <body>
+        <div id="fb-root"></div>
+        <script>
+          friendList = 0;
+          // Additional JS functions here
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '508280459233248',
+              channelUrl : 'http://theinfiniteset.net/Chronos/',
+              status     : true, // check login status
+              cookie     : true, // enable cookies to allow the server to access the session
+              xfbml      : true  // parse XFBML
+            });
+
+            // Additional init code here
+
+            FB.getLoginStatus(function(response) {
+              if (response.status === 'connected') {
+                getFriends(response);
+                // connected
+                } else if (response.status === 'not_authorized') {
+                login();
+                // not_authorized
+                } else {
+                login();
+                // not_logged_in
+              }
+            });
+          };
+
+
+          function login() {
+            FB.login(function(response) {
+              if (response.authResponse) {
+                // connected
+                testAPI();
+                getFriends(response);
+                } else {
+                // cancelled
+              }
+            });
+          }
+
+          function testAPI() {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function(response) {
+              console.log('Good to see you, ' + response.name + '.');
+            });
+          }
+
+        // Load the SDK Asynchronously
+        (function(d){
+          var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement('script'); js.id = id; js.async = true;
+          js.src = "//connect.facebook.net/en_US/all.js";
+          ref.parentNode.insertBefore(js, ref);
+        }(document));
+
+        function getFriends(response) {
+          var token = response["authResponse"]["accessToken"];
+
+          var visualRequest = $.ajax({
+            url: "https://graph.facebook.com/me/friends?access_token=" + token,
+            type: "get",
+            dataType : "json",
+          });
+          visualRequest.done(friendSuccess);
+          visualRequest.fail(friendError);
+        }
+
+        function friendSuccess(result, a, b) {
+          friendList = result;
+        }
+
+        function friendError(jqxhr, type, error) {
+          var msg = "An Ajax error occurred!\n\n";
+          if (type == 'error') {
+            if (jqxhr.readyState == 0) {
+              // Request was never made - security block?
+              msg += "Looks like the browser security-blocked the request.";
+              } else {
+              // Probably an HTTP error.
+              msg += 'Error code: ' + jqxhr.status + "\n" +
+              'Error text: ' + error + "\n" +
+              'Full content of response: \n\n' + jqxhr.responseText;
+            }
+            } else {
+            msg += 'Error type: ' + type;
+            if (error != "") {
+              msg += "\nError text: " + error;
+            }
+          }
+          alert(msg);
+
+        }
+
+
+
+
+                                                                                                          </script>
 	<h1>Welcome to Chronos</h1>
 	<h4 id="subtitle">Matching schedules for Huskies</h4>
 	<div class="Container">
