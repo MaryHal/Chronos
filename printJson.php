@@ -1,24 +1,24 @@
 <?php
-header('Content-Type: application/json');
+/* header('Content-Type: application/json'); */
 
-$data = null;
-if (!isset($_GET["data"]))
-{
-    $data = get_data("http://search.twitter.com/search.json?q=hello");
-}
-else
-{
-    $data = json_decode($_GET["data"]);
-}
-if ($data != null)
-{
-    /* echo prettyPrintJSON($data); */
-    echo $data;
-}
-else
-{
-    print("{\"error\":\"Data was not received.\"}");
-}
+/* $data = null; */
+/* if (!isset($_GET["data"])) */
+/* { */
+/*     $data = get_data("http://search.twitter.com/search.json?q=hello"); */
+/* } */
+/* else */
+/* { */
+/*     $data = json_decode($_GET["data"]); */
+/* } */
+/* if ($data != null) */
+/* { */
+/*     /\* echo prettyPrintJSON($data); *\/ */
+/*     echo $data; */
+/* } */
+/* else */
+/* { */
+/*     print("{\"error\":\"Data was not received.\"}"); */
+/* } */
 
 
 function get_data($url)
