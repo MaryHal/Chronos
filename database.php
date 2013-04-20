@@ -3,7 +3,7 @@
   $id = 0;
   $classes = getUserClasses($database, $id);
   foreach($classes as $class) {
-    getAllClassInfo($database, $id);
+    getAllClassInfo($database, $class);
   }
 
 
@@ -55,10 +55,13 @@
     $result["instructor"] = getInstructor($database, $result["iid"]);
     $result["textbooks"] = getTextbooks($database, $id);
 
-    echo $result["sname"];
-    echo $result["textbooks"][0]["title"];
+    //echo $result["sname"];
+    //echo $result["textbooks"];
+    //print_r($result["textbooks"]);
+    //echo "<br />";
 
     print_r($result);
+    echo "<br />";
     echo "<br />";
     return $result;
   }
@@ -99,10 +102,13 @@
       WHERE cid = ${id};";
     $results = $database->query($query);
     $textbooks = array();
-    foreach($textbooks as $textbook) {
-      array_push($textboos, $textbook);
+  //  echo "<br /> id" . $id;
+    foreach($results as $textbook) {
+      $textbooks[] = $textbook;
+ //     echo "<br />heeeeere";
     }
-    return $details;
+//    print_r($textbooks);
+    return $textbooks;
   }
 ?>
 
