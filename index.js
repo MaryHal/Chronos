@@ -9,7 +9,7 @@ var endY = 0;
 
 $(document).ready(function() {
 
-    alert("Start?");
+    
 
     buildTable();
     hideRows();
@@ -84,8 +84,8 @@ $(document).ready(function() {
        endY = (e.pageY - this.offsetTop);
        
        //get days.
-       var startCol = Math.floor(startX / (($(tr).width() / 8)));
-       var endCol = Math.floor(endX / (($(tr).width() / 8)));
+       var startCol = Math.floor(startX / (($("tr").width() / 8)));
+       var endCol = Math.floor(endX / (($("tr").width() / 8)));
        if (startCol < 1) {
            startCol = 1;
        }
