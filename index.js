@@ -121,6 +121,19 @@ $(document).ready(function() {
        alert("Starting Col(Days):" + startCol + "\nEnding Col:" + endCol);
        alert("Strating Row(Time):" + startRow + "\nEnding Row:" + endRow);
     });
+
+    $("#class-search").keyup(function() {
+      var query = $("#class-search").val();
+      alert(query);
+      /*
+      $.ajax("http://theinfiniteset.net/Chronos/printJson.php",
+        { success : keySuccess,
+          error :   keyError,
+          dataType : "jsonp",
+	      });
+        */
+
+    });
 });
 
 
