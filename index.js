@@ -11,6 +11,8 @@ var currentQtr = "SPR";
 var currentYear = 2013;
 var user = 0;
 
+var classIds = [];
+
 $(document).ready(function() {
 
     
@@ -18,9 +20,11 @@ $(document).ready(function() {
     buildTable();
     hideRows();
     testAjax();
+    $("#edit").click(editSchedule);
+    $("#save").click(editBuddies);
 
-      var visualRequest = $.ajax({
-         url: "http://theinfiniteset.net/Chronos/query.php",
+    var visualRequest = $.ajax({
+        url: "http://theinfiniteset.net/Chronos/query.php",
          type: "post",
           dataType : "json",
          data: {"userID" : user, "quarter" : currentQtr, "year" : currentYear},
@@ -32,7 +36,23 @@ $(document).ready(function() {
   function visualSuccess(result, a, b) {
   }
 
-    
+    function editSchedule() {
+	
+	$("#edit_schedule").css("display","block");
+	$("#edit_buddies").css("display","none");
+	
+
+    }
+
+    function editBuddies() {
+	
+	$("#edit_buddies").css("display","block");
+	$("#edit_schedule").css("display","none");
+	
+
+    }
+
+
     function buildTable() {
 		for(var i = 0; i < 48 * 6; i++ ){
 		    var new_row = $("<tr id=time" + i + ">");
@@ -71,7 +91,7 @@ $(document).ready(function() {
     
     function hideRows() {
 		var x = $("tbody").children().slice(0,90);
-		var y = $("tbody").children().slice(210,287);
+		var y = $("tbody").children().slice(210,288);
 		x.each(function(index){
 		    $(this).css("display","none");
 		});
@@ -276,8 +296,16 @@ $(document).ready(function() {
   function keySuccess(result, a, b) {
     saveClasses(0, 0);
       var i = 0;
+      $('#completion').html("");
+      $('#class_lookup_details');
       while(result[i]) {
-
+	  // alert(result[i]["sname"]);
+          var shortname = result[i]["sname"];
+          var section = result[i]["sec"];
+          var classType = result[i]["type"];
+          var button = $('<button>').text(shortname + "" + section + "" + classType);
+          button.click(function() {  } );
+          $('#completion').append(button);
 	  i++;
       }
 //    alert(JSON.stringify(result));

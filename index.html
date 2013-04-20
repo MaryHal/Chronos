@@ -172,18 +172,46 @@
 		      </table>
 		    </div>
 		    <div class="span5">
+		      <div id="edit_schedule">
 		      <form class="form-search">
-			<input type="text" class="input-large search-query" id="class-search">
+			<input type="text" placeholder="Find Classes!" class="input-large search-query" id="class-search"> 
 			  <i type="submit" class="icon-chevron-down">
 			    </i>
+			<button type="submit" id="add_class" class="btn btn-primary">Add Class</button>
 			</form>
-		    </div>
-		    
-		    <div id="buddies">
-		    	<ul id="buddylist">
+			<div id="class_lookup_details">
+			  
+			</div>
+			
+		    <div class="buddies">
+		    	<ul class="buddylist">
+		    		<li id="buddy1">Kevin Bacon</li>
+		    	</ul>
+		    </div>			
+
+			<button type="submit" id="save" class="btn btn-success">Save!</button>
+			</div>
+		      <div id="edit_buddies">
+		      <form class="form-search">
+			<input type="text" placeholder="Find Friends!" class="input-large search-query" id="class-search">
+			  <i type="submit" class="icon-chevron-down">
+			    </i>
+			<button type="submit" id="overlap" class="btn btn-primary">Overlap Schedules</button>
+			</form>    
+		    <div class="buddies">
+		    	<ul class="buddylist">
 		    		<li id="buddy1">Kevin Bacon</li>
 		    	</ul>
 		    </div>
+
+			<button type="submit" id="edit" class="btn btn-warning">Edit Your Schedule</button>
+			<button type="submit" id="share" class="btn btn-success">Share This!</button>
+		      </div>
+
+		      </div>
+
+                    <div id="completion"></div>
+
 		  </div>
 		</div>
 	   
