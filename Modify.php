@@ -3,9 +3,9 @@ header('Content-Type: application/json');
 include("database.php");
 
 // Test Data
-$_POST["action"] = "add";
-$_POST["data"] = '{"userID" : "0",
-                   "classes" : ["12444spr2013"]}';
+/* $_POST["action"] = "add"; */
+/* $_POST["data"] = '{"userID" : "0", */
+/*                    "classes" : ["12444spr2013"]}'; */
 
 $action = null;
 if (isset($_POST["action"]))
