@@ -80,10 +80,10 @@
   /*
    * Returns an array of {title, author}.
    */
-  function getTextbooks($database, $id) {
+  function getTextbooks($database, $classid) {
     $query =
       "SELECT title, author FROM Textbooks
-      WHERE cid = ${id};";
+      WHERE cid = ${classid};";
     $results = $database->query($query);
     $textbooks = array();
     foreach($results as $textbook) {
