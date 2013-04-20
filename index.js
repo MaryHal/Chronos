@@ -44,7 +44,7 @@ $(document).ready(function() {
 		    	offset = 0;
 		    }
 		    
-		    for(var p = 0; p < 8 - offset; p++) {
+		    for(var p = 0; p < 8 -offset; p++) {
 			var new_cell = $("<td id=day" + p + "time" + i + ">");
 			new_cell.addClass("unselectable");
 			new_cell.attr("unselectable", "on");
@@ -140,23 +140,45 @@ $(document).ready(function() {
       endHour = endTime / 100;
     }
 
+    function createBlock(startDay, startTime, endDay, endTime) {
+	var x = $("#day" + startDay + "time" + startTime);
+	startTime = (30/5)*Math.floor( startTime *5/30 );
+	alert(startTime);
+	x.attr("rowspan","" + endTime-startTime);
+	x.attr("colspan","" + endDay-startDay);
+	x.css("backgroundColor","gray");
+	
+    }
+
     function addOther(startDay, startTime, endDay, endTime) {
     	for (var i = startDay; i <= endDay; i++) {
-    		for (var j = startTime; j <= endTime; j++) {
-    			if ( j % 6 == 0) {
-    				$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
-    			} else {
-	    			$("#day" + (i - 1) + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
-    			}
+    	    for (var j = startTime; j <= endTime; j++) {
+    		if ( j % 6 == 0) {
+    		    $("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+    		} else {
+	    	    $("#day" + (i - 1) + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
     		}
+    	    }
     	}
     }
 
     $("tbody").mousedown(function(e) {
         startX = e.pageX - this.offsetLeft;
         startY = e.pageY - 230;
+	$("tbody").mousedown(function(q) {
+	   var currX = q.pageX - this.offsetLeft;
+	   var currY = q.pageY - 230;
+	    if($("#starcraft")) {
+		$("#starcraft").css({"position":"absolute","top":"startY","left":"startX", "width":""+currX-startX, "color":"red"});
+	    } else {
+		$("tbody").append("<div id=starcraft>");
+		$("#starcraft").css("position","absolute");
+		}
+
+	})
     });
-    
+
+
     $("tbody").mouseup(function(e) {
        endX = (e.pageX - this.offsetLeft);
        endY = (e.pageY - 230);
@@ -177,7 +199,8 @@ $(document).ready(function() {
 
        alert("Starting Col(Days):" + startCol + "\nEnding Col:" + endCol);
        alert("Strating Row(Time):" + startRow + "\nEnding Row:" + endRow);
-       addOther(startCol, startRow, endCol, endRow);
+	createBlock(startCol,startRow,endCol,endRow);
+      // addOther(startCol, startRow, endCol, endRow);
     });
     
     $("#class-search").keyup(function() {
@@ -190,14 +213,7 @@ $(document).ready(function() {
       });
      request.done(keySuccess);
      request.fail(keyError);
-      /*
-      $.ajax("http://theinfiniteset.net/Chronos/search.php",
-	       { success : keySuccess,
-           error :   keyError,
-           dataType : "jsonp",
-           data : {"query" : query},
-	       });
-         */
+
     });
 
 
