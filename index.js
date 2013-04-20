@@ -253,8 +253,7 @@ $(document).ready(function() {
 	var query = $('#buddy_search').val()
 	var newList = getFriends(query);
 	var i = 0;
-	alert('hey');
-alert(friendList);
+
 	while(newList[i]) {
 	    	
 	    var div = $('<div id="buddy_details">');
@@ -348,23 +347,24 @@ alert(friendList);
       $('#completion').html("");
       $('#class_lookup_details');
       while(result[i]) {
-	  // alert(result[i]["sname"]);
+
           var classId = result[i]["id"];
           var shortname = result[i]["sname"];
           var section = result[i]["sec"];
           var classType = result[i]["type"];
           var button = $('<button>').text(shortname + "" + section + "" + classType);
+	  
           button.click( function() { addClassToList(classId); } );
           $('#completion').append(button);
 	  i++;
       }
-//    alert(JSON.stringify(result));
+
   }
 
     function addClassToList(myClass)
     {
         classIds.push(myClass);
-        alert(classIds);
+
     }
 
   function keyError(jqxhr, type, error) {
