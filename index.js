@@ -90,6 +90,29 @@ $(document).ready(function() {
 	}
 	alert(msg);
     }
+    
+    function addClass() {
+	    $.ajax("http://theinfiniteset.net/Chronos/printJson.php",
+	       {        success : ajaxSuccess,
+			error :   ajaxError,
+			dataType : "jsonp",
+	       }
+	      )
+      var startTime = 0;
+      var endTime = 0;
+      
+      var startHour = 0;
+      var startMinute = 0;
+      startMinute = startTime % 10;
+      startMinute = (parseInt(startTime / 10) % 10 * 10);
+      startHour = time / 100;
+      
+      var endHour = 0;
+      var endMinute = 0;
+      endMinute = endTime % 10;
+      endMinute = (parseInt(endTime / 10) % 10 * 10);
+      endHour = endTime / 100;
+    }
 
     function addOther(startDay, startTime, endDay, endTime) {
     	for (var i = startDay; i <= endDay; i++) {
