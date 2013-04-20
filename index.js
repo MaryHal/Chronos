@@ -14,7 +14,7 @@
 
 (function() {
     window.onlaod = function() {
-      var body = document.getelementById("body");
+      var body = document.getElementById("body");
       body.onclick = success;
     };
     
