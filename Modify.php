@@ -3,23 +3,22 @@ header('Content-Type: application/json');
 include("database.php");
 
 // Test Data
-/* $_POST["action"] = "add"; */
-/* $_POST["data"] = '{"userID" : "0", */
+/* $_GET["action"] = "add"; */
+/* $_POST["userID"] = '{"userID" : "0", */
 /*                    "classes" : ["12444spr2013"]}'; */
 
 $action = null;
-if (isset($_POST["action"]))
+if (isset($_GET["action"]))
 {
-    $action = $_POST["action"];
+    $action = $_GET["action"];
 }
 
 // Test if there is json data.
-if (isset($_POST["data"]))
+if (isset($_GET["data"]))
 {
-    $data = $_POST["data"];
-    $json = json_decode($data, true);
-    $userID  = $json["userID"];
-    $classes = $json["classes"];
+    $data = $_GET["data"];
+    $userID  = $_GET["userID"];
+    $classes = explode(",", $_GET["classes"]);
 
     $success = executeAction($action, $userID, $classes);
 
