@@ -149,8 +149,6 @@ $(document).ready(function() {
            data : {"query" : query},
 	       });
          */
-      alert('here');
-
     });
 
 
@@ -159,7 +157,6 @@ $(document).ready(function() {
   }
 
   function keyError(jqxhr, type, error) {
-    alert('I AM ERROR');
     var msg = 0;
 if (type == 'error') {
 	    if (jqxhr.readyState == 0) {
@@ -178,7 +175,6 @@ if (type == 'error') {
 	    }
 	}
 	alert(msg);
-	alert("aosenuht");
   }
 });
 
