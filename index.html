@@ -43,11 +43,15 @@
             FB.getLoginStatus(function(response) {
               if (response.status === 'connected') {
                 getFriends(response);
+                alert('connected');
                 // connected
                 } else if (response.status === 'not_authorized') {
+                alert('not auth');
                 login();
                 // not_authorized
                 } else {
+                alert('not logged');
+                login();
                 login();
                 // not_logged_in
               }
