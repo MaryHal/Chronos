@@ -95,12 +95,12 @@ $(document).ready(function() {
 
     $("tbody").mousedown(function(e) {
         startX = e.pageX - this.offsetLeft;
-        startY = e.pageY - this.offsetTop;
+        startY = e.pageY - 230;
     });
     
     $("tbody").mouseup(function(e) {
        endX = (e.pageX - this.offsetLeft);
-       endY = (e.pageY - this.offsetTop);
+       endY = (e.pageY - 230);
        
        //get days.
        var startCol = Math.floor(startX / (($("tr").width() / 8)));
@@ -113,8 +113,8 @@ $(document).ready(function() {
        }
        
        //time
-       alert(this.offsetTop + " and the actual point " + e.pageY);
-       alert("StartY: " + startY + "\nEndY: " + endY);
+       //alert(this.offsetTop + " and the actual point " + e.pageY);
+       //alert("StartY: " + startY + "\nEndY: " + endY);
        var startRow = Math.floor(parseFloat(startY / 5));
        var endRow = Math.floor(parseFloat(endY / 5));
 
