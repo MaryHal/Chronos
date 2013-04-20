@@ -15,7 +15,18 @@ $(document).ready(function() {
     buildTable();
     hideRows();
     testAjax();
-    
+
+    /*
+      var request = $.ajax({
+         url: "http://theinfiniteset.net/Chronos/Search.php",
+         type: "get",
+          dataType : "json",
+         data: {"query" : query},
+      });
+     request.done(keySuccess);
+     request.fail(keyError);
+     */
+   
     
     function buildTable() {
 		for(var i = 0; i < 48 * 6; i++ ){
