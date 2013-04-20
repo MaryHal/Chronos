@@ -7,7 +7,7 @@ var y = 0;
 
 $(document).ready(function() {
 
-    alert("test");
+    //alert("test");
 
     $("tbody").mousedown(function(e) {
         //alert("clicked");
@@ -16,13 +16,16 @@ $(document).ready(function() {
     });
     
     $("tbody").mouseup(function(e) {
-       alert("release");
+       //alert("release");
        x = x - (e.pageX - this.offsetLeft);
        y = y - (e.pageY - this.offsetTop);
        x = Math.abs(x);
        y = Math.abs(y);
-       alert(x);
-       alert(y);
+      // alert(x);
+       //alert(y);
+       
+       
+
     });
 });
 
