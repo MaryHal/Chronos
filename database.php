@@ -13,13 +13,18 @@
     $query =
       "SELECT c.id FROM Classes c, Instructors i
       WHERE c.iid = i.id
-      AND (c.sname Like '%" . $qry . "%' OR c.fname LIke '%" . $qry . "%' OR i.lname Like '%" . $qry . "%' OR i.fname LIke '%" . $qry . "%');";
+      AND (c.sname LIKE '%${qry}%' OR
+           c.fname LIKE '%${qry}%' OR
+           i.lname LIKE '%${qry}%' OR
+           i.fname LIKE '%$qry%');";
+
     $result = $database->query($query);
+
     $allClasses = array();
     foreach($result as $class) {
       $allClasses[] = getAllClassInfo($database, $class["id"]);
     }
-    return $result;
+    return $allClasses;
   }
 
   /*
@@ -49,17 +54,17 @@
    *  details, instructor, textbooks}
    */
   function getAllClassInfo($database, $classid) {
-    $id = $database->quote($classid);
+    $classid = $database->quote($classid);
     $query = 
       "SELECT id, sname, fname, sec, qtr, yr, iid, credits, reqs, type
        FROM Classes
-       WHERE id = ${id};";    
+       WHERE id = ${classid};";
 
     $result = $database->query($query);
     $result = $result->fetch(0);
-    $result["details"] = getClassDetails($database, $id);
+    $result["details"] = getClassDetails($database, $classid);
     $result["instructor"] = getInstructor($database, $result["iid"]);
-    $result["textbooks"] = getTextbooks($database, $id);
+    $result["textbooks"] = getTextbooks($database, $classid);
 
     return $result;
   }
@@ -68,9 +73,10 @@
    * Returns an array of {day, stime, etime, loc}.
    */
   function getClassDetails($database, $classid) {
+      $classid = $database->quote($classid);
     $query =
       "SELECT day, stime, etime, loc FROM ClassDetails
-      WHERE cid = ${classid};";
+       WHERE cid = ${classid};";
     $results = $database->query($query);
     $details = array();
     foreach($results as $detail) {
