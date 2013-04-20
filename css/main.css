@@ -10,6 +10,7 @@ h1, #subtitle {
 
 #buddies {
     margin: 30px;
+    float: right;
 }
 
 #buddylist {
@@ -17,13 +18,13 @@ h1, #subtitle {
     background-color: rgb(275, 150, 150);
     border-radius: 15px;
     list-style: none;
-    margin-right: 300px;
+    margin-right: 200px;
+    padding: 10px;
 }
 
 #buddy1 {
-    backgrounnd-color: rgb(254, 100, 100);
     color: black;
-    border-radius: 15px;
+    width: 200px;
 }
 
 table {
