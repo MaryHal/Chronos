@@ -50,9 +50,13 @@
        WHERE id = ${id};";    
 
     $result = $database->query($query);
+    $result = $result->fetch(0);
     $result["details"] = getClassDetails($database, $id);
-    $result["instructor"] = getInstructor($database, (int) $result["iid"]);
-    $result["textbooks"] = getClassDetails($database, $id);
+    $result["instructor"] = getInstructor($database, $result["iid"]);
+    $result["textbooks"] = getTextbooks($database, $id);
+
+    echo $result["sname"];
+    echo $result["textbooks"][0]["title"];
 
     print_r($result);
     echo "<br />";
@@ -66,7 +70,12 @@
     $query =
       "SELECT day, stime, etime, loc FROM ClassDetails
       WHERE cid = ${id};";
-    return $database->query($query);
+    $results = $database->query($query);
+    $details = array();
+    foreach($results as $detail) {
+      array_push($details, $detail);
+    }
+    return $details;
   }
 
   /*
@@ -77,8 +86,8 @@
     $query =
       "SELECT fname, lname FROM Instructors
       WHERE id = ${id};";
-    $result =  $database->query($query);
-    return $result[0];
+    $result = $database->query($query);
+    return $result->fetch(0);
   }
 
   /*
@@ -86,9 +95,14 @@
    */
   function getTextbooks($database, $id) {
     $query =
-      "SELECT title, author FROM Instructors
+      "SELECT title, author FROM Textbooks
       WHERE cid = ${id};";
-    return $database->query($query);
+    $results = $database->query($query);
+    $textbooks = array();
+    foreach($textbooks as $textbook) {
+      array_push($textboos, $textbook);
+    }
+    return $details;
   }
 ?>
 
