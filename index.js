@@ -18,44 +18,42 @@ $(document).ready(function() {
     
     
     function buildTable() {
-	for(var i = 0; i < 48 * 6; i++ ){
-	    var new_row = $("<tr id=time" + i + ">");
-
-	    for(var p = 0; p < 8; p++) {
-		var new_cell = $("<td id=day" + p + "time" + i + ">");
-		if(i%6 == 0) {
-		    new_cell.css("border-top","1px solid #DDDDDD");
-		    if(p == 0) {
-			new_cell.attr("rowspan","6");
-			new_cell.css("background-color","gray");
-			var hour = Math.floor(i / 12);
-			if (hour > 12)
-			    hour = hour % 12;
-			if(i/12 > hour)
-			    new_cell.html("" + hour + ":30");
-			else
-			    new_cell.html("" + hour + ":00");
+		for(var i = 0; i < 48 * 6; i++ ){
+		    var new_row = $("<tr id=time" + i + ">");
+	
+		    for(var p = 0; p < 8; p++) {
+			var new_cell = $("<td id=day" + p + "time" + i + ">");
+			if(i%6 == 0) {
+			    new_cell.css("border-top","1px solid #DDDDDD");
+			    if(p == 0) {
+				new_cell.attr("rowspan","6");
+				new_cell.css("background-color","gray");
+				var hour = Math.floor(i / 12);
+				if (hour > 12)
+				    hour = hour % 12;
+				if(i/12 > hour)
+				    new_cell.html("" + hour + ":30");
+				else
+				    new_cell.html("" + hour + ":00");
+			    }
+			}
+	
+			new_row.append(new_cell);
 		    }
+		    $("tbody").append(new_row);
 		}
-
-		new_row.append(new_cell);
-	    }
-	    $("tbody").append(new_row);
-	}
     }
     
     function hideRows() {
-	var x = $("tbody").children().slice(0,90);
-	var y = $("tbody").children().slice(210,287);
-	x.each(function(index){
-	    $(this).css("display","none");
-	});
-	y.each(function(index){
-	    $(this).css("display","none");
-	});
-
-	
-    }
+		var x = $("tbody").children().slice(0,90);
+		var y = $("tbody").children().slice(210,287);
+		x.each(function(index){
+		    $(this).css("display","none");
+		});
+		y.each(function(index){
+		    $(this).css("display","none");
+		});
+	}
     
     function testAjax() {
 	/*$.ajax("http://theinfiniteset.net/Chronos/printJson.php",
@@ -96,7 +94,11 @@ $(document).ready(function() {
     function addOther(startDay, startTime, endDay, endTime) {
     	for (var i = startDay; i <= endDay; i++) {
     		for (var j = startTime; j <= endTime; j++) {
-    			$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+    			if ( j % 6 == 0) {
+    				$("#day" + (i + 1) + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+    			} else {
+	    			$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+    			}
     		}
     	}
     }
