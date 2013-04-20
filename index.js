@@ -11,14 +11,14 @@ $(document).ready(function() {
 
     $("tbody").mousedown(function(e) {
         //alert("clicked");
-        var x = e.pageX - this.offsetLeft;
-        var y = e.pageY - this.offsetTop;
+        x = e.pageX - this.offsetLeft;
+        y = e.pageY - this.offsetTop;
     });
     
     $("tbody").mouseup(function(e) {
        alert("release");
-       var x -= e.pageX - this.offsetLeft;
-       var y -= e.pageY - this.offsetTop;
+       x = x - (e.pageX - this.offsetLeft);
+       y = y - (e.pageY - this.offsetTop);
        x = Math.abs(x);
        y = Math.abs(y);
        alert(x);
