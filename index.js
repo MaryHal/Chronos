@@ -94,7 +94,7 @@ $(document).ready(function() {
        }
        
        //time
-       alert("Height: " + $("tr").height());
+       alert("Height: " + parseInt($("tr").height()));
        var startRow = Math.floor(parseFloat(startY / 5));
        var endRow = Math.floor(parseFloat(endY / 5));
 
