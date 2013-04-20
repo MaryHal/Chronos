@@ -14,9 +14,8 @@ if (isset($_GET["action"]))
 }
 
 // Test if there is json data.
-if (isset($_GET["data"]))
+if (isset($_GET["userID"]))
 {
-    $data = $_GET["data"];
     $userID  = $_GET["userID"];
     $classes = explode(",", $_GET["classes"]);
 
@@ -39,7 +38,7 @@ function executeAction($action, $userID, $classes)
     global $database;
     switch ($action)
     {
-    case "add":
+     case "add":
         // Query to modify tables
         foreach ($classes as $class)
         {

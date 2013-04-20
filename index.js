@@ -14,8 +14,6 @@ var classIds = [];
 
 $(document).ready(function() {
 
-    
-
     buildTable();
     hideRows();
     testAjax();
@@ -45,6 +43,7 @@ $(document).ready(function() {
 
     function editBuddies() {
 	
+        saveClasses(classIds, []);
 	$("#edit_buddies").css("display","block");
 	$("#edit_schedule").css("display","none");
 
@@ -180,7 +179,7 @@ $(document).ready(function() {
 		newClass.css({"position":"relative", "left":"startX", "top":"startY", "height":"yPix", "width":"xPix"});
 		var info = $("<p>Class ID</p>");
 		newClass.append(info);
-		$(tbody).append(newClass);	
+		$("tbody").append(newClass);	
     }
 
     function addOther(startDay, startTime, endDay, endTime) {
@@ -249,8 +248,19 @@ $(document).ready(function() {
     });
 
     $("#buddy_search").keyup(function() {
-      var query = $('#buddy_search').val()
-      var newList = getFriends(query);
+
+	var query = $('#buddy_search').val()
+	var newList = getFriends(query);
+	var i = 0;
+
+	while(newList[i]) {
+	    	
+	    var div = $('<div id="buddy_details">');
+	    div.html(newList[i]["name"]);
+	    $("#edit_buddies").append(div);
+
+	    i++;
+	}
     });
 
     $("#overlap").click(function() {
@@ -274,6 +284,7 @@ $(document).ready(function() {
       alert(JSON.stringify(request));
     }
 
+
     function getFriends(name) {
       var length = name.length;
       var newList = [];
@@ -291,7 +302,7 @@ $(document).ready(function() {
     }
 
   function saveClasses(add, remove) {
-         add = ["12444spr2013", "14070spr2013"];
+         // add = ["12444spr2013", "14070spr2013"];
          if (add.length > 0) {
            var addString = add[0];
            for (var i = 1; i < add.length; i++) {
@@ -331,22 +342,29 @@ $(document).ready(function() {
 
 
   function keySuccess(result, a, b) {
-    saveClasses(0, 0);
       var i = 0;
       $('#completion').html("");
       $('#class_lookup_details');
       while(result[i]) {
-	  // alert(result[i]["sname"]);
+
+          var classId = result[i]["id"];
           var shortname = result[i]["sname"];
           var section = result[i]["sec"];
           var classType = result[i]["type"];
           var button = $('<button>').text(shortname + "" + section + "" + classType);
-          button.click(function() {  } );
+	  
+          button.click( function() { addClassToList(classId); } );
           $('#completion').append(button);
 	  i++;
       }
-//    alert(JSON.stringify(result));
+
   }
+
+    function addClassToList(myClass)
+    {
+        classIds.push(myClass);
+
+    }
 
   function keyError(jqxhr, type, error) {
     var msg = 0;
