@@ -3,7 +3,10 @@
   $id = 0;
   $classes = getUserClasses($database, $id, "2013", "SPR");
   foreach($classes as $class) {
-    getAllClassInfo($database, $class);
+    $info = getAllClassInfo($database, $class);
+    print_r($info);
+    print "<br />";
+    print "<br />";
   }
 
 
@@ -53,9 +56,6 @@
     $result["instructor"] = getInstructor($database, $result["iid"]);
     $result["textbooks"] = getTextbooks($database, $id);
 
-    print_r($result);
-    print "<br />";
-    print "<br />";
     return $result;
   }
 
