@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+  <head>
+    <rel="stylesheet" type="text/css" href="css/main.css" />
+    <meta name="viewport" http-equiv="content-type" content="text/php; charset=utf-8,width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap stuff -->
+
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+      <link href="bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <title>Site Template - Welcome!</title>
+  </head>
+
+  <body>
+    <div class="Container">
+              <div class="tabbable"> <!-- Only required for left/right tabs -->
+                        <ul class="nav nav-tabs">
+                                  <li class="active"><a href="#tab1" data-toggle="tab">Visual Schedule</a></li>
+                                  <li><a href="#tab2" data-toggle="tab">Find Sutdy Buddies</a></li>
+                        </ul>
+                        <div class="tab-content">
+                                  <div class="tab-pane active" id="tab1">
+                                  <p>Spring 2013</p>
+                                  </div>
+                                  <div class="tab-pane" id="tab2">
+                                  <p>I NEED HELP.</p>
+                                  </div>
+                        </div>
+              </div>
+      <div class="Header">
+
+      </div>
+     
+      <div class="row-fluid" id="days">
+        <div class="span1" id="sunday">
+	  Sunday
+        </div>
+	<div class="span1" id="monday">
+	 Monday
+	</div>
+	<div class="span1" id="tuesday">
+	 Tuesday
+	</div>
+	<div class="span1" id="wednesday">
+	  Wednesday
+	</div>
+	<div class="span1" id="thursday">
+	  Thursday
+	</div>
+	<div class="span1" id="friday">
+	  Friday
+	</div>
+	<div class="span1" id="saturday">
+	  Saturday
+	</div>
+      </div>
+      <div class="Menu">
+        <ul id="nav">
+          <li>menu item</li>
+          <li>menu item</li>
+          <li>menu item</li>
+          <li>menu item</li>
+          <li>menu item</li>
+          <li>menu item</li>
+        </ul>
+      </div>
+
+      <div class="Body">
+
+      </div>
+    </div>
+
+  </body>
+
+  <footer>
+    <div class="Footer">
+      <b>Copyright - 2013</b>
+    </div>
+  </footer>
+</html>
