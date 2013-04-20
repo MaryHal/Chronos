@@ -1,10 +1,10 @@
 <?php
 
-print('<pre><p>GET:</p>');
+print('<p>GET:</p><pre>');
 print_r($_GET);
 print('</pre><br/>');
 
-print('<pre><p>POST:</p>');
+print('<p>POST:</p><pre>');
 print_r($_POST);
 print('</pre>');
 

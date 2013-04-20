@@ -1,14 +1,26 @@
 <?php
-// We can expect JSON data from them.
-/* $user_name = "iocx"; */
-/* $password = "HelloWorld"; */
-/* $database = "172.17.0.172"; */
-/* $server = "chronos.db"; */
+//include("database.php");
+header('Content-Type: text/plain');
 
-/* mysql_connect($server, $user_name, $password); */
+// Database
+/* $db =  */
 
-/* print "Connection to the Server opened"; */
+// Test if there is json data.
+if (isset($_POST["data"]))
+{
+    $data = $_POST["data"];
+    $json = json_decode($data, true);
+    $userID = $json->userID;
+    $classes = $json->classes;
 
-$data = json_decode($_POST["data"]);
+    // Query to modify tables
+
+    // Success Output!
+    print("User data successfully updated!");
+}
+else
+{
+    print("User data could not be changed.");
+}
 
 ?>

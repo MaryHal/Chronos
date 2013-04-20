@@ -1,9 +1,16 @@
 <?php
-/* $data = json_decode($_POST["data"]); */
-
-$data = get_data("http://search.twitter.com/search.json?q=hello");
+$data = null;
+if (!isset($_GET["data"]))
+{
+    $data = get_data("http://search.twitter.com/search.json?q=hello");
+}
+else
+{
+    $data = json_decode($_GET["data"]);
+}
 header('Content-type: text/javascript');
-echo prettyPrint($data);
+echo prettyPrintJSON($data);
+
 
 function get_data($url)
 {
@@ -17,7 +24,7 @@ function get_data($url)
     return $data;
 }
 
-function prettyPrint($json)
+function prettyPrintJSON($json)
 {
     $result = '';
     $level = 0;
