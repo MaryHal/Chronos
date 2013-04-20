@@ -130,6 +130,57 @@ $(document).ready(function() {
        alert("Strating Row(Time):" + startRow + "\nEnding Row:" + endRow);
        addOther(startCol, startRow, endCol, endRow);
     });
+    
+    $("#class-search").keyup(function() {
+      var query = $('#class-search').val()
+      var request = $.ajax({
+         url: "http://theinfiniteset.net/Chronos/Search.php",
+         type: "get",
+          dataType : "json",
+         data: {"query" : query},
+      });
+     request.done(keySuccess);
+     request.fail(keyError);
+      /*
+      $.ajax("http://theinfiniteset.net/Chronos/search.php",
+	       { success : keySuccess,
+           error :   keyError,
+           dataType : "jsonp",
+           data : {"query" : query},
+	       });
+         */
+      alert('here');
+
+    });
+
+
+  function keySuccess(result, a, b) {
+    alert('hello');
+    alert(JSON.stringify(result));
+  }
+
+  function keyError(jqxhr, type, error) {
+    alert('I AM ERROR');
+    var msg = 0;
+if (type == 'error') {
+	    if (jqxhr.readyState == 0) {
+		// Request was never made - security block?
+		msg += "Looks like the browser security-blocked the request.";
+	    } else {
+		// Probably an HTTP error.
+		msg += 'Error code: ' + jqxhr.status + "\n" +
+		    'Error text: ' + error + "\n" +
+		    'Full content of response: \n\n' + jqxhr.responseText;
+	    }
+	} else {
+	    msg += 'Error type: ' + type;
+	    if (error != "") {
+		msg += "\nError text: " + error;
+	    }
+	}
+	alert(msg);
+	alert("aosenuht");
+  }
 });
 
 
