@@ -8,7 +8,7 @@ var endX = 0;
 var endY = 0;
 
 $(document).ready(function() {
-
+    alert("Start?");
     $("tbody").mousedown(function(e) {
         startX = e.pageX - this.offsetLeft;
         startY = e.pageY - this.offsetTop;
