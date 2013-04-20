@@ -8,10 +8,19 @@ h1, #subtitle {
     margin-left:1%;
 }
 
-td {
-    border: none;
+#buddies {
+    margin: 30px;
 }
 
+#buddylist {
+    padding: 10px;
+}
+
+#buddy1 {
+    backgrounnd-color: rgb(254, 100, 100);
+    color: black;
+    border-radius: 15px;
+}
 
 table {
     min-width:700px;
