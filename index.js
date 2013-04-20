@@ -11,6 +11,7 @@ var currentQtr = "SPR";
 var currentYear = 2013;
 
 var classIds = [];
+var removeIds = [];
 
 $(document).ready(function() {
 
@@ -43,8 +44,7 @@ $(document).ready(function() {
     }
 
     function editBuddies() {
-	
-        saveClasses(classIds, []);
+        saveClasses(classIds, removeIds);
 	$("#edit_buddies").css("display","block");
 	$("#edit_schedule").css("display","none");
 
@@ -161,36 +161,40 @@ $(document).ready(function() {
 		var x = $("#day" + startDay + "time" + startTime);
 		startTime = (30/5)*Math.floor( startTime *5/30 );
 		alert(startTime);
-		x.attr("rowspan","" + endTime-startTime);
-		x.attr("colspan","" + endDay-startDay);
-		x.css("backgroundColor","gray");
+		//x.attr("rowspan","" + endTime-startTime);
+		//x.attr("colspan","" + endDay-startDay);
+		//x.css("backgroundColor","gray");
 		
 		
-		var yPix = $("td").height() * (endTime - startTime);
-		var xPix = $("td").width() * (endDay - startDay) + 63;
-		var startY = startTime - 90;
-		var startX;
-		if (startTime % 6 != 0) {
-			startX = 73 * (startDay - 1) + 62;
-		} else {
-			startX = 73 * startDay + 62;
-		}
+		var yPix = 6 * (endTime - startTime);
+		var xPix = 73 * (endDay - startDay + 1);
+		var startY = (startTime * ($("td").height())) + 45;
+		alert($("td").height());
+		startY = startY - (startY % 30);
 		
-		var newClass = $("<div></div>");
-		newClass.css({"position":"relative", "left":"startX", "top":"startY", "height":"yPix", "width":"xPix"});
-		var info = $("<p>Class ID</p>");
-		newClass.append(info);
-		$("tbody").append(newClass);	
+		var startX = 72 * (startDay - 1) + 110;
+
+		var newClass = document.createElement("div");
+		newClass.className = "chicken";
+		newClass.style.position = "absolute";
+		newClass.style.left = startX + "px";
+		newClass.style.top = startY + "px";
+		newClass.style.height = yPix + "px";
+		newClass.style.width = xPix + "px";
+		newClass.style.backgroundColor = "red";
+		var info = document.createElement("p");
+		newClass.appendChild(info);
+		document.getElementById("bounds").appendChild(newClass);	
     }
 
     function addOther(startDay, startTime, endDay, endTime) {
     	for (var i = startDay; i <= endDay; i++) {
     	    for (var j = startTime; j <= endTime; j++) {
-    		if ( j % 6 == 0) {
-    		    $("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
-    		} else {
-	    	    $("#day" + (i - 1) + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
-    		}
+				if ( j % 6 == 0) {
+					$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+				} else {
+					$("#day" + (i - 1) + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+				}
     	    }
     	}
     }
@@ -232,7 +236,7 @@ $(document).ready(function() {
 
        alert("Starting Col(Days):" + startCol + "\nEnding Col:" + endCol);
        alert("Strating Row(Time):" + startRow + "\nEnding Row:" + endRow);
-	createBlock(startCol,startRow,endCol,endRow);
+	   createBlock(startCol,startRow,endCol,endRow);
       // addOther(startCol, startRow, endCol, endRow);
     });
     
@@ -250,14 +254,13 @@ $(document).ready(function() {
 
     $("#buddy_search").keyup(function() {
 
+
 	var elements = $("#friends_list").children();
 	elements.css("display","block");
 
 	$(".btn-group").addClass("open");
 	if($("#buddy_search").val() == "")
 		    $(".btn-group").removeClass("open");
-
-
 
 	var query = $('#buddy_search').val()
 	var newList = getFriends(query);
@@ -353,7 +356,8 @@ $(document).ready(function() {
   }
 
   function addSuccess(results, a, b) {
-    alert("success");
+      classIds = [];
+      removeIds = [];
   }
 
 
@@ -368,8 +372,12 @@ $(document).ready(function() {
           var section = result[i]["sec"];
           var classType = result[i]["type"];
           var button = $('<button>').text(shortname + "" + section + "" + classType);
-	  
-          button.click( function() { addClassToList(classId); } );
+          button.attr("id", classId);
+
+          button.click(function () {
+              addClassToList($(this).attr("id"));
+          });
+
           $('#completion').append(button);
 	  i++;
       }
@@ -379,7 +387,6 @@ $(document).ready(function() {
     function addClassToList(myClass)
     {
         classIds.push(myClass);
-
     }
 
   function keyError(jqxhr, type, error) {
