@@ -251,8 +251,19 @@ $(document).ready(function() {
     });
 
     $("#buddy_search").keyup(function() {
-      var query = $('#buddy_search').val()
-      newList = getFriends(query);
+	var query = $('#buddy_search').val()
+	var newList = getFriends(query);
+	var i = 0;
+	alert('hey');
+alert(friendList);
+	while(newList[i]) {
+	    	
+	    var div = $('<div id="buddy_details">');
+	    div.html(newList[i]["name"]);
+	    $("#edit_buddies").append(div);
+
+	    i++;
+	}
     });
 
     $("#overlap").click(function() {
