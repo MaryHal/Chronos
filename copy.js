@@ -15,13 +15,30 @@ $(document).ready(function() {
     buildTable();
     hideRows();
     testAjax();
-    
+
+    /*
+      var request = $.ajax({
+         url: "http://theinfiniteset.net/Chronos/Search.php",
+         type: "get",
+          dataType : "json",
+         data: {"query" : query},
+      });
+     request.done(keySuccess);
+     request.fail(keyError);
+     */
+   
     
     function buildTable() {
 		for(var i = 0; i < 48 * 6; i++ ){
 		    var new_row = $("<tr id=time" + i + ">");
-	
-		    for(var p = 0; p < 8; p++) {
+		    var offset = 0;
+		    if ( i % 6 != 0) {
+		    	offset = 1;	
+		    } else {
+		    	offset = 0;
+		    }
+		    
+		    for(var p = 0; p < 8 - offset; p++) {
 			var new_cell = $("<td id=day" + p + "time" + i + ">");
 			if(i%6 == 0) {
 			    new_cell.css("border-top","1px solid #DDDDDD");
@@ -90,14 +107,37 @@ $(document).ready(function() {
 	}
 	alert(msg);
     }
+    
+    function addClass() {
+	    $.ajax("http://theinfiniteset.net/Chronos/printJson.php",
+	       {        success : ajaxSuccess,
+			error :   ajaxError,
+			dataType : "jsonp",
+	       }
+	      )
+      var startTime = 0;
+      var endTime = 0;
+      
+      var startHour = 0;
+      var startMinute = 0;
+      startMinute = startTime % 10;
+      startMinute = (parseInt(startTime / 10) % 10 * 10);
+      startHour = time / 100;
+      
+      var endHour = 0;
+      var endMinute = 0;
+      endMinute = endTime % 10;
+      endMinute = (parseInt(endTime / 10) % 10 * 10);
+      endHour = endTime / 100;
+    }
 
     function addOther(startDay, startTime, endDay, endTime) {
     	for (var i = startDay; i <= endDay; i++) {
     		for (var j = startTime; j <= endTime; j++) {
     			if ( j % 6 == 0) {
-    				$("#day" + (i + 1) + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+    				$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
     			} else {
-	    			$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+	    			$("#day" + (i - 1) + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
     			}
     		}
     	}
@@ -149,8 +189,6 @@ $(document).ready(function() {
            data : {"query" : query},
 	       });
          */
-      alert('here');
-
     });
 
 
@@ -159,7 +197,6 @@ $(document).ready(function() {
   }
 
   function keyError(jqxhr, type, error) {
-    alert('I AM ERROR');
     var msg = 0;
 if (type == 'error') {
 	    if (jqxhr.readyState == 0) {
@@ -178,7 +215,6 @@ if (type == 'error') {
 	    }
 	}
 	alert(msg);
-	alert("aosenuht");
   }
 });
 
