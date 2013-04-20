@@ -202,7 +202,13 @@ $(document).ready(function() {
 
 
   function keySuccess(result, a, b) {
-    alert(JSON.stringify(result));
+      var i = 0;
+      while(result[i]) {
+
+	  alert(result[i]["sname"]);
+	  i++;
+      }
+//    alert(JSON.stringify(result));
   }
 
   function keyError(jqxhr, type, error) {
