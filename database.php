@@ -100,7 +100,26 @@
     }
     return $textbooks;
   }
+
+  function addClassToUser($database, $uid, $classid) {
+    $uid = $database->quote($uid);
+    $classid = $database->quote($classid);
+    $query = 
+      "INSERT INTO UserClasses
+       VALUES ($uid, $classid);";
+    $database->query($query);
+  }
+
+  function removeClass($database, $uid, $classid) {
+    $uid = $database->quote($uid);
+    $classid = $database->quote($classid);
+    $query = 
+      "DELETE FROM UserClasses
+       WHERE $uid = UserClasses.uid AND $classid = UserClasses.cid;";
+    $database->query($query);
+  }
 ?>
+
 
 
 
