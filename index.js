@@ -179,7 +179,7 @@ $(document).ready(function() {
 		}
 		
 		var newClass = $("<div></div>");
-		newClass.css({"position":"relative", "left":"startX, "top":"startY", "height":"yPix", "width":"xPix")
+		newClass.css({"position":"relative", "left":"startX", "top":"startY", "height":"yPix", "width":"xPix"});
 		var info = $("<p>Class ID</p>");
 		newClass.append(info);
 		$(tbody).append(newClass);	
@@ -238,9 +238,8 @@ $(document).ready(function() {
       // addOther(startCol, startRow, endCol, endRow);
     });
     
-    $("#class-search").keyup(function() {
-    getFriends("ri");
-      var query = $('#class-search').val()
+    $("#class_search").keyup(function() {
+      var query = $('#class_search').val()
       var request = $.ajax({
          url: "http://theinfiniteset.net/Chronos/Search.php",
          type: "get",
@@ -249,18 +248,26 @@ $(document).ready(function() {
       });
      request.done(keySuccess);
      request.fail(keyError);
-
     });
+
+    $("#buddy_search").keyup(function() {
+      var query = $('#buddy_search').val()
+      newList = getFriends(query);
+    }
+
+    $("#overlap")
 
     function getFriends(name) {
       var length = name.length;
-      var friends = friendList["data"];
       var newList = [];
-      for (var i = 0; i < friends.length; i++) {
-        var friend = friends[i];
-        var friendName = friend["name"];
-        if (name.toLowerCase() == friendName.substring(0, length).toLowerCase()) {
-          newList.push(friend);
+      if (friendList != 0) {
+        var friends = friendList["data"];
+        for (var i = 0; i < friends.length; i++) {
+          var friend = friends[i];
+          var friendName = friend["name"];
+          if (name.toLowerCase() == friendName.substring(0, length).toLowerCase()) {
+            newList.push(friend);
+          }
         }
       }
       return newList;
