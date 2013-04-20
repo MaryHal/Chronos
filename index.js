@@ -10,7 +10,7 @@ $(document).ready(function() {
     alert("test");
 
     $("tbody").mousedown(function(e) {
-        alert("clicked");
+        //alert("clicked");
         var x = e.pageX - this.offsetLeft;
         var y = e.pageY - this.offsetTop;
     });
