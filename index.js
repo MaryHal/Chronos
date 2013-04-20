@@ -113,9 +113,9 @@ $(document).ready(function() {
        }
        
        //time
-       alert("Height: " + parseInt($("tr").height()));
-       var startRow = Math.floor(parseFloat(startY / 38));
-       var endRow = Math.floor(parseFloat(endY / 38));
+       //alert("Height: " + parseInt($("tr").height()));
+       var startRow = Math.floor(parseFloat(startY / 5));
+       var endRow = Math.floor(parseFloat(endY / 5));
 
        alert("Starting Col(Days):" + startCol + "\nEnding Col:" + endCol);
        alert("Strating Row(Time):" + startRow + "\nEnding Row:" + endRow);
