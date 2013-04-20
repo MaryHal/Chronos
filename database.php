@@ -115,7 +115,7 @@
   function addClassToUser($database, $uid, $classid) {
     $uid = $database->quote($uid);
     $classid = $database->quote($classid);
-    $query = 
+    $query =
       "INSERT INTO UserClasses
        VALUES ($uid, $classid);";
     $database->query($query);
@@ -124,11 +124,22 @@
   function removeClass($database, $uid, $classid) {
     $uid = $database->quote($uid);
     $classid = $database->quote($classid);
-    $query = 
+    $query =
       "DELETE FROM UserClasses
        WHERE $uid = UserClasses.uid AND $classid = UserClasses.cid;";
     $database->query($query);
   }
+
+function findSameClass($database, $classid)
+{
+    $classid = $database->quote($classid);
+
+    $query =
+      "SELECT uid FROM UserClasses
+       WHERE cid = ${classid};";
+    $result = $database->query($query);
+    return $result->fetch(0);
+}
 
 function test()
 {
@@ -143,4 +154,3 @@ function test()
 }
 
 ?>
-
