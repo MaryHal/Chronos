@@ -97,8 +97,8 @@ $(document).ready(function() {
        
        var startRow = Math.floor(parseFloat(startY / 5));
        var endRow = Math.floor(parseFloat(endY / 5));
-       alert(startY);
-       alert(endY);
+       alert(startRow);
+       alert(endRow);
        alert("Starting Col(Days):" + startCol + "\nEnding Col:" + endCol);
        alert("Strating Row(Time):" + startRow + "\nEnding Row:" + endRow);
     });
