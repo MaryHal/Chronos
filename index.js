@@ -21,7 +21,7 @@ $(document).ready(function() {
 	for(var i = 0; i < 48 * 6; i++ ){
 	    var new_row = $("<tr id=time" + i + ">");
 
-	    for(var p = 0; p < 6; p++) {
+	    for(var p = 0; p < 8; p++) {
 		var new_cell = $("<td id=day" + p + "time" + i + ">");
 		if(i%6 == 0) {
 		    new_cell.css("border-top","1px solid #DDDDDD");
