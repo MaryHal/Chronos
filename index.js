@@ -124,9 +124,9 @@ $(document).ready(function() {
     	for (var i = startDay; i <= endDay; i++) {
     		for (var j = startTime; j <= endTime; j++) {
     			if ( j % 6 == 0) {
-    				$("#day" + (i + 1) + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+    				$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
     			} else {
-	    			$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+	    			$("#day" + (i - 1) + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
     			}
     		}
     	}
