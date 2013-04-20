@@ -285,7 +285,7 @@ alert(friendList);
     function friendSuccess(request, a, b) {
       alert(JSON.stringify(request));
     }
->>>>>>> fc7e8551a7cd19bb96191f5e0528f80702ed23cf
+
 
     function getFriends(name) {
       var length = name.length;
