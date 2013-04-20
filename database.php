@@ -1,7 +1,7 @@
 <?php
   $database = connectdb();
   $id = 0;
-  $classes = getUserClasses($database, $id);
+  $classes = getUserClasses($database, $id, "2013", "SPR");
   foreach($classes as $class) {
     getAllClassInfo($database, $class);
   }
@@ -17,23 +17,21 @@
   /*
    * Returns an array of class id's.
    */
-  function getUserClasses($database, $id) {
+  function getUserClasses($database, $id, $year, $qtr) {
     $id = $database->quote($id);
+    $year = $database->quote($year);
+    $qtr = $database->quote($qtr);
     $query = 
-      "SELECT cid FROM UserClasses
-       WHERE uid = ${id};";
+      "SELECT cid FROM UserClasses uc, Classes c
+      WHERE uc.cid = c.id
+      AND uc.uid = ${id}
+      AND c.yr = ${year}
+      AND c.qtr = ${qtr};";
     $result = $database->query($query);
     $classes = array();
     foreach($result as $row) {
       array_push($classes, $row["cid"]);
     }
-    if (!$classes) {
-      echo "no classes found\n";
-    }
-    /*foreach($classes as $class) {
-      echo $class;
-    }
-     */
     return $classes;
   }
 
@@ -55,14 +53,9 @@
     $result["instructor"] = getInstructor($database, $result["iid"]);
     $result["textbooks"] = getTextbooks($database, $id);
 
-    //echo $result["sname"];
-    //echo $result["textbooks"];
-    //print_r($result["textbooks"]);
-    //echo "<br />";
-
     print_r($result);
-    echo "<br />";
-    echo "<br />";
+    print "<br />";
+    print "<br />";
     return $result;
   }
 
@@ -102,12 +95,9 @@
       WHERE cid = ${id};";
     $results = $database->query($query);
     $textbooks = array();
-  //  echo "<br /> id" . $id;
     foreach($results as $textbook) {
       $textbooks[] = $textbook;
- //     echo "<br />heeeeere";
     }
-//    print_r($textbooks);
     return $textbooks;
   }
 ?>
