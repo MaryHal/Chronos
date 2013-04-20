@@ -180,7 +180,7 @@ $(document).ready(function() {
 		newClass.css({"position":"relative", "left":"startX", "top":"startY", "height":"yPix", "width":"xPix"});
 		var info = $("<p>Class ID</p>");
 		newClass.append(info);
-		$(tbody).append(newClass);	
+		$("tbody").append(newClass);	
     }
 
     function addOther(startDay, startTime, endDay, endTime) {
