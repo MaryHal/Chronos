@@ -11,6 +11,8 @@ var currentQtr = "SPR";
 var currentYear = 2013;
 var user = 0;
 
+var classIds = [];
+
 $(document).ready(function() {
 
     
@@ -219,9 +221,16 @@ $(document).ready(function() {
 
   function keySuccess(result, a, b) {
       var i = 0;
+      $('#completion').html("");
+      $('#class_lookup_details');
       while(result[i]) {
-
-	  alert(result[i]["sname"]);
+	  // alert(result[i]["sname"]);
+          var shortname = result[i]["sname"];
+          var section = result[i]["sec"];
+          var classType = result[i]["type"];
+          var button = $('<button>').text(shortname + "" + section + "" + classType);
+          button.click(function() {  } );
+          $('#completion').append(button);
 	  i++;
       }
 //    alert(JSON.stringify(result));
