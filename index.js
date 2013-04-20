@@ -80,7 +80,6 @@ $(document).ready(function() {
     });
     
     $("tbody").mouseup(function(e) {
-        alert("Beginning.");
        endX = (e.pageX - this.offsetLeft);
        endY = (e.pageY - this.offsetTop);
        
