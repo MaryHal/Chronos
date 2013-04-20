@@ -7,6 +7,9 @@ var startX = 0;
 var startY = 0;
 var endX = 0;
 var endY = 0;
+var currentQtr = "SPR";
+var currentYear = 2013;
+var user = 0;
 
 $(document).ready(function() {
 
@@ -16,17 +19,20 @@ $(document).ready(function() {
     hideRows();
     testAjax();
 
-    /*
-      var request = $.ajax({
-         url: "http://theinfiniteset.net/Chronos/Search.php",
-         type: "get",
+      var visualRequest = $.ajax({
+         url: "http://theinfiniteset.net/Chronos/query.php",
+         type: "post",
           dataType : "json",
-         data: {"query" : query},
+         data: {"userID" : user, "quarter" : currentQtr, "year" : currentYear},
       });
-     request.done(keySuccess);
-     request.fail(keyError);
-     */
+     visualRequest.done(visualSuccess);
+     visualRequest.fail(keyError);
+
    
+  function visualSuccess(result, a, b) {
+    alert(JSON.stringify(result));
+  }
+
     
     function buildTable() {
 		for(var i = 0; i < 48 * 6; i++ ){
