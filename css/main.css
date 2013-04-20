@@ -20,12 +20,12 @@ h1, #subtitle {
     margin-left:1%;
 }
 
-#buddies {
+.buddies {
     margin: 30px;
     float: right;
 }
 
-#buddylist {
+.buddylist {
     padding: 10px;
     background-color: rgb(275, 150, 150);
     border-radius: 15px;
@@ -60,4 +60,9 @@ table {
    background-color: #989898 ;
    max-width:40px;
 
+}
+
+
+#edit_schedule {
+    display:none
 }

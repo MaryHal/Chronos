@@ -18,9 +18,11 @@ $(document).ready(function() {
     buildTable();
     hideRows();
     testAjax();
+    $("#edit").click(editSchedule);
+    $("#save").click(editBuddies);
 
-      var visualRequest = $.ajax({
-         url: "http://theinfiniteset.net/Chronos/query.php",
+    var visualRequest = $.ajax({
+        url: "http://theinfiniteset.net/Chronos/query.php",
          type: "post",
           dataType : "json",
          data: {"userID" : user, "quarter" : currentQtr, "year" : currentYear},
@@ -32,7 +34,23 @@ $(document).ready(function() {
   function visualSuccess(result, a, b) {
   }
 
-    
+    function editSchedule() {
+	
+	$("#edit_schedule").css("display","block");
+	$("#edit_buddies").css("display","none");
+	
+
+    }
+
+    function editBuddies() {
+	
+	$("#edit_buddies").css("display","block");
+	$("#edit_schedule").css("display","none");
+	
+
+    }
+
+
     function buildTable() {
 		for(var i = 0; i < 48 * 6; i++ ){
 		    var new_row = $("<tr id=time" + i + ">");
