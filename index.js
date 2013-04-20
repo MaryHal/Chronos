@@ -252,12 +252,29 @@ $(document).ready(function() {
 
     $("#buddy_search").keyup(function() {
       var query = $('#buddy_search').val()
-      newList = getFriends(query);
+      var newList = getFriends(query);
     });
 
     $("#overlap").click(function() {
-      alert('test');
+      var friend = $(".first_friend");
+      if (friend[0]) {
+        var fid = friend.id;
+        fid = fid.substring(7, fid.length);
+
+        var visualRequest = $.ajax({
+          url: "http://theinfiniteset.net/Chronos/query.php",
+            type: "post",
+            dataType : "json",
+            data: {"userID" : fid, "quarter" : currentQtr, "year" : currentYear},
+        });
+        visualRequest.done(friendSuccess);
+        visualRequest.fail(keyError);
+      }
     });
+
+    function friendSuccess(request, a, b) {
+      alert(JSON.stringify(request));
+    }
 
     function getFriends(name) {
       var length = name.length;
