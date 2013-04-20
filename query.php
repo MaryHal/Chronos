@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: application/json');
 include("database.php");
+include("printJson.php");
 
 $_POST["userID"]  = "0";
 $_POST["year"]    = "2013";
@@ -24,9 +25,14 @@ if (isset($_POST["userID"]))
         {
             array_push($result, getAllClassInfo($database, $class));
         }
+
         if ($_GET["pp"])
         {
             echo prettyPrintJSON(json_encode($result, JSON_FORCE_OBJECT));
+        }
+        else
+        {
+            echo json_encode($result, JSON_FORCE_OBJECT);
         }
     }
 }
