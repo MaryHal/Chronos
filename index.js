@@ -248,20 +248,28 @@ $(document).ready(function() {
     });
 
     $("#buddy_search").keyup(function() {
-      alert(user);
 
 	var query = $('#buddy_search').val()
 	var newList = getFriends(query);
 	var i = 0;
+	if($("#buddy_details")) 
+	    $("#buddy_details").remove();
 
-	while(newList[i]) {
-	    	
+//	} else {
 	    var div = $('<div id="buddy_details">');
-	    div.html(newList[i]["name"]);
-	    $("#edit_buddies").append(div);
+	    $("#buddy_details").html("");
+//	}
+	while(newList[i]) {
 
+	    var friend = $('<div id='+"friend_"+newList[i]["id"]+'>');
+	    friend.html(newList[i]["name"]);
+	    div.append(friend);
+	    if(i == 0) {
+		friend.addClass("first_friend");
+	    }
 	    i++;
 	}
+	$("#edit_buddies").append(div);
     });
 
     $("#overlap").click(function() {
@@ -338,8 +346,12 @@ $(document).ready(function() {
   }
 
   function addSuccess(results, a, b) {
+<<<<<<< HEAD
       classIds = [];
       removeIds = [];
+=======
+    classIds = [];
+>>>>>>> 4c69cd305e5880ac2d3c8dfc8a3caa994055703b
     alert("success");
   }
 
@@ -350,17 +362,23 @@ $(document).ready(function() {
       $('#class_lookup_details');
       while(result[i]) {
 
-          var classId = result[i]["id"];
+          var myClass = result[i]["id"];
           var shortname = result[i]["sname"];
           var section = result[i]["sec"];
           var classType = result[i]["type"];
           var button = $('<button>').text(shortname + "" + section + "" + classType);
+<<<<<<< HEAD
           button.attr("id", classId);
 
           button.click(function () {
               addClassToList($(this).attr("id"));
           });
 
+=======
+          button.id = myClass;
+	  
+          button.click( function() { addClassToList($(this).id); } );
+>>>>>>> 4c69cd305e5880ac2d3c8dfc8a3caa994055703b
           $('#completion').append(button);
 	  i++;
       }
