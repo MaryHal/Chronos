@@ -92,7 +92,7 @@ $(document).ready(function() {
 	alert(msg);
     }
 
-    function addOther(var startDay, var startTime, var endDay, var endTime) {
+    function addOther(startDay, startTime, endDay, endTime) {
     	for (var i = startDay; i <= endDay; i++) {
     		for (var j = startTime; j <= endTime; j++) {
     			$("#day" + i + "time" + j).css("backgroundColor":"rgb(245, 110, 110)", "color":"black");
@@ -125,6 +125,7 @@ $(document).ready(function() {
 
        alert("Starting Col(Days):" + startCol + "\nEnding Col:" + endCol);
        alert("Strating Row(Time):" + startRow + "\nEnding Row:" + endRow);
+       addOther(startCol, startRow, endCol, endRow);
     });
 });
 
