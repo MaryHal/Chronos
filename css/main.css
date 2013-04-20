@@ -8,16 +8,18 @@ h1, #subtitle {
     margin-left:1%;
 }
 
-
+td {
+    border: none;
+}
 
 
 table {
     min-width:700px;
-border:3px solid #454545;
+    border:3px solid #454545;
 }
 
 .table tr td {
-   text-align:center;
+    text-align:center;
     border: 0;
     height:2px;
     padding:1px;
