@@ -95,7 +95,7 @@ $(document).ready(function() {
     function addOther(startDay, startTime, endDay, endTime) {
     	for (var i = startDay; i <= endDay; i++) {
     		for (var j = startTime; j <= endTime; j++) {
-    			$("#day" + i + "time" + j).css("backgroundColor":"rgb(245, 110, 110)", "color":"black");
+    			$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
     		}
     	}
     }
