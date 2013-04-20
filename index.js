@@ -30,7 +30,6 @@ $(document).ready(function() {
 
    
   function visualSuccess(result, a, b) {
-    alert(JSON.stringify(result));
   }
 
     
@@ -199,7 +198,6 @@ $(document).ready(function() {
 
 
   function keySuccess(result, a, b) {
-    alert(JSON.stringify(result));
   }
 
   function keyError(jqxhr, type, error) {
