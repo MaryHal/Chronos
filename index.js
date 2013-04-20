@@ -11,6 +11,7 @@ var currentQtr = "SPR";
 var currentYear = 2013;
 
 var classIds = [];
+var removeIds = [];
 
 $(document).ready(function() {
 
@@ -42,8 +43,7 @@ $(document).ready(function() {
     }
 
     function editBuddies() {
-	
-        saveClasses(classIds, []);
+        saveClasses(classIds, removeIds);
 	$("#edit_buddies").css("display","block");
 	$("#edit_schedule").css("display","none");
 
@@ -338,6 +338,8 @@ $(document).ready(function() {
   }
 
   function addSuccess(results, a, b) {
+      classIds = [];
+      removeIds = [];
     alert("success");
   }
 
@@ -353,8 +355,12 @@ $(document).ready(function() {
           var section = result[i]["sec"];
           var classType = result[i]["type"];
           var button = $('<button>').text(shortname + "" + section + "" + classType);
-	  
-          button.click( function() { addClassToList(classId); } );
+          button.attr("id", classId);
+
+          button.click(function () {
+              addClassToList($(this).attr("id"));
+          });
+
           $('#completion').append(button);
 	  i++;
       }
@@ -364,7 +370,6 @@ $(document).ready(function() {
     function addClassToList(myClass)
     {
         classIds.push(myClass);
-
     }
 
   function keyError(jqxhr, type, error) {
