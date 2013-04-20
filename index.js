@@ -203,6 +203,7 @@ $(document).ready(function() {
     });
     
     $("#class-search").keyup(function() {
+    getFriends("ri");
       var query = $('#class-search').val()
       var request = $.ajax({
          url: "http://theinfiniteset.net/Chronos/Search.php",
@@ -215,12 +216,68 @@ $(document).ready(function() {
 
     });
 
+    function getFriends(name) {
+      var length = name.length;
+      var friends = friendList["data"];
+      var newList = [];
+      for (var i = 0; i < friends.length; i++) {
+        var friend = friends[i];
+        var friendName = friend["name"];
+        if (name.toLowerCase() == friendName.substring(0, length).toLowerCase()) {
+          alert(friendName.substring(0, length));
+          newList.push(friend);
+        }
+      }
+      alert('here');
+      alert (newList);
+      return newList;
+    }
+
+  function saveClasses(add, remove) {
+         add = ["12444spr2013", "14070spr2013"];
+         if (add.length > 0) {
+           var addString = add[0];
+           for (var i = 1; i < add.length; i++) {
+             addString += ",";
+             addString += add[i];
+           }
+           var request = $.ajax({
+             url: "http://theinfiniteset.net/Chronos/Modify.php",
+               type: "get",
+               dataType : "json",
+               data: {"action" : "add", "userID" : user, "classes" : addString},
+           });
+           request.done(addSuccess);
+           request.fail(keyError);
+         }
+
+         if (remove.length > 0) {
+           var removeString = remove[0];
+           for (var i = 1; i < remove.length; i++) {
+             removeString += ",";
+             removeString += add[i];
+           }
+           request = $.ajax({
+           url: "http://theinfiniteset.net/Chronos/Modify.php",
+           type: "get",
+            dataType : "json",
+           data: {"action" : "remove", "userID" : user, "classes" : removeString},
+            });
+           request.done(addSuccess);
+           request.fail(keyError);
+         }
+  }
+
+  function addSuccess(results, a, b) {
+    alert("success");
+  }
+
 
   function keySuccess(result, a, b) {
+    saveClasses(0, 0);
       var i = 0;
       while(result[i]) {
 
-	  alert(result[i]["sname"]);
 	  i++;
       }
 //    alert(JSON.stringify(result));
