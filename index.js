@@ -5,4 +5,7 @@
 
 $(document).ready(function() {
     alert("test");
-    });
+    $("body").mousedown(function() {
+        alert("You clicked down!");
+    })
+});
