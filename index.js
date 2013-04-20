@@ -19,11 +19,24 @@ $(document).ready(function() {
     function buildTable() {
 	for(var i = 0; i <48*6; i++ ){
 	    var new_row = $("<tr id=time" + i + ">");
+
 	    for(var p = 0; p<8;p++) {
 		var new_cell = $("<td id=day" + p + "time" + i + ">");
 		if(i%6 == 0) {
 		    new_cell.css("border-top","1px solid #DDDDDD");
+		    if(p == 0) {
+			new_cell.attr("rowspan","6");
+			new_cell.css("background-color","gray");
+			var hour = Math.floor(i/12);
+			if (hour > 12)
+			    hour = hour % 12;
+			if(i/12 > hour)
+			    new_cell.html("" + hour + ":30");
+			else
+			    new_cell.html("" + hour + ":00");
+		    }
 		}
+
 		new_row.append(new_cell);
 	    }
 	    $("tbody").append(new_row);
@@ -31,10 +44,16 @@ $(document).ready(function() {
     }
     
     function hideRows() {
-	for (var i = 0; i <260; i ++) {
-	    $("time" + i + "").css("visibility","hidden");
-	}
+	var x = $("tbody").children().slice(0,90);
+	var y = $("tbody").children().slice(210,287);
+	x.each(function(index){
+	    $(this).css("display","none");
+	});
+	y.each(function(index){
+	    $(this).css("display","none");
+	});
 
+	
     }
     
     function testAjax() {
@@ -94,9 +113,9 @@ $(document).ready(function() {
        }
        
        //time
-       alert("Height: " + $("tr").height);
-       var startRow = Math.floor(parseFloat(startY / 5));
-       var endRow = Math.floor(parseFloat(endY / 5));
+       alert("Height: " + parseInt($("tr").height()));
+       var startRow = Math.floor(parseFloat(startY / 38));
+       var endRow = Math.floor(parseFloat(endY / 38));
 
        alert("Starting Col(Days):" + startCol + "\nEnding Col:" + endCol);
        alert("Strating Row(Time):" + startRow + "\nEnding Row:" + endRow);
