@@ -46,11 +46,14 @@ $(document).ready(function() {
 		    
 		    for(var p = 0; p < 8 - offset; p++) {
 			var new_cell = $("<td id=day" + p + "time" + i + ">");
+			new_cell.addClass("unselectable");
+			new_cell.attr("unselectable", "on");
 			if(i%6 == 0) {
 			    new_cell.css("border-top","1px solid #DDDDDD");
 			    if(p == 0) {
 				new_cell.attr("rowspan","6");
 				new_cell.css("background-color","gray");
+
 				var hour = Math.floor(i / 12);
 				if (hour > 12)
 				    hour = hour % 12;
