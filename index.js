@@ -20,8 +20,14 @@ $(document).ready(function() {
     function buildTable() {
 		for(var i = 0; i < 48 * 6; i++ ){
 		    var new_row = $("<tr id=time" + i + ">");
-	
-		    for(var p = 0; p < 8; p++) {
+		    var offset = 0;
+		    if ( i % 6 != 0) {
+		    	offset = 1;	
+		    } else {
+		    	offset = 0;
+		    }
+		    
+		    for(var p = 0; p < 8 - offset; p++) {
 			var new_cell = $("<td id=day" + p + "time" + i + ">");
 			if(i%6 == 0) {
 			    new_cell.css("border-top","1px solid #DDDDDD");
@@ -118,9 +124,9 @@ $(document).ready(function() {
     	for (var i = startDay; i <= endDay; i++) {
     		for (var j = startTime; j <= endTime; j++) {
     			if ( j % 6 == 0) {
-    				$("#day" + (i + 1) + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+    				$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
     			} else {
-	    			$("#day" + i + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
+	    			$("#day" + (i - 1) + "time" + j).css({"backgroundColor":"rgb(245, 110, 110)", "color":"black"});
     			}
     		}
     	}
