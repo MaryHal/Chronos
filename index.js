@@ -253,15 +253,24 @@ $(document).ready(function() {
 	var query = $('#buddy_search').val()
 	var newList = getFriends(query);
 	var i = 0;
+	if($("#buddy_details")) 
+	    $("#buddy_details").remove();
 
-	while(newList[i]) {
-	    	
+//	} else {
 	    var div = $('<div id="buddy_details">');
-	    div.html(newList[i]["name"]);
-	    $("#edit_buddies").append(div);
+	    $("#buddy_details").html("");
+//	}
+	while(newList[i]) {
 
+	    var friend = $('<div id='+"friend_"+newList[i]["id"]+'>');
+	    friend.html(newList[i]["name"]);
+	    div.append(friend);
+	    if(i == 0) {
+		friend.addClass("first_friend");
+	    }
 	    i++;
 	}
+	$("#edit_buddies").append(div);
     });
 
     $("#overlap").click(function() {
