@@ -1,6 +1,6 @@
 <?php
 //include("database.php");
-header('Content-Type: text/plain');
+header('Content-Type: application/json');
 
 // Database
 /* $db =  */
@@ -17,11 +17,11 @@ if (isset($_POST["data"]))
 
 
     // Success Output!
-    print("User data successfully updated!");
+    print("{\"success\":\"User data changed.\"}");
 }
 else
 {
-    print("User data could not be changed.");
+    print("{\"error\":\"User data could not be changed.\"}");
 }
 
 ?>
