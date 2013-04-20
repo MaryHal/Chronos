@@ -103,8 +103,8 @@ $(document).ready(function() {
        endY = (e.pageY - 230);
        
        //get days.
-       var startCol = Math.floor(startX / (($("tr").width() / 8)));
-       var endCol = Math.floor(endX / (($("tr").width() / 8)));
+       var startCol = Math.floor(startX / (($("tr").width() - 62)/ 7));
+       var endCol = Math.floor(endX / (($("tr").width() - 62) / 7));
        if (startCol < 1) {
            startCol = 1;
        }
