@@ -1,7 +1,18 @@
 /* MAIN CSS SHEET */
 
-table {
+body,  {
 
+}
+
+h1, #subtitle {
+    margin-left:1%;
+}
+
+
+
+
+table {
+    min-width:700px;
 border:3px solid #454545;
 }
 

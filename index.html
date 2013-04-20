@@ -24,7 +24,7 @@
 
       <body>
 	<h1>Welcome to Chronos</h1>
-	<h4>Matching schedules for Huskies</h4>
+	<h4 id="subtitle">Matching schedules for Huskies</h4>
 	<div class="Container">
           <div class="tabbable"> <!-- Only required for left/right tabs -->
             <ul class="nav nav-tabs">
@@ -72,12 +72,12 @@
 		      </table>
 		    </div>
 		    <div class="span5">
-		      <div class="ui-widget-content ui-draggable" id="draggable2" style="position: relative;">
-			<p>I revert when I'm not dropped</p>
-		      </div>
-		      <div class="ui-widget-header ui-droppable" id="droppable">
-			<p>Drop me here</p>
-		      </div> 
+		      <form class="form-search">
+			<input type="text" class="input-large search-query">
+			  <i type="submit" class="icon-chevron-down">
+			    </i>
+			</form>
+			
 		      <!-- blocks for the dragging and dropping 
 
 			   <div class="ui-widget ui-helper-clearfix">
@@ -124,16 +124,7 @@
             </div>
           </div>
 	  
-	  <div class="Menu">
-            <ul id="nav">
-              <li>menu item</li>
-              <li>menu item</li>
-              <li>menu item</li>
-              <li>menu item</li>
-              <li>menu item</li>
-              <li>menu item</li>
-            </ul>
-	  </div>
+
 
       </body>
 
