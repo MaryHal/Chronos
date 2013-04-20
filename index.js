@@ -95,8 +95,8 @@ $(document).ready(function() {
        
        //time
        
-       var startRow = Math.floor(startY / 5);
-       var endRow = Math.floor(endY / 5);
+       var startRow = Math.floor(parseFloat(startY / 5));
+       var endRow = Math.floor(parseFloat(endY / 5));
        alert(startY);
        alert(endY);
        alert("Starting Col(Days):" + startCol + "\nEnding Col:" + endCol);
