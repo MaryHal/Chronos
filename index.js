@@ -143,30 +143,46 @@ $(document).ready(function() {
 			dataType : "jsonp",
 	       }
 	      )
-      var startTime = 0;
-      var endTime = 0;
-      
-      var startHour = 0;
-      var startMinute = 0;
-      startMinute = startTime % 10;
-      startMinute = (parseInt(startTime / 10) % 10 * 10);
-      startHour = time / 100;
-      
-      var endHour = 0;
-      var endMinute = 0;
-      endMinute = endTime % 10;
-      endMinute = (parseInt(endTime / 10) % 10 * 10);
-      endHour = endTime / 100;
+	      var startTime = 0;
+	      var endTime = 0;
+	      
+	      var startHour = 0;
+	      var startMinute = 0;
+	      startMinute = startTime % 10;
+	      startMinute = (parseInt(startTime / 10) % 10 * 10);
+	      startHour = time / 100;
+	      
+	      var endHour = 0;
+	      var endMinute = 0;
+	      endMinute = endTime % 10;
+	      endMinute = (parseInt(endTime / 10) % 10 * 10);
+	      endHour = endTime / 100;
     }
 
     function createBlock(startDay, startTime, endDay, endTime) {
-	var x = $("#day" + startDay + "time" + startTime);
-	startTime = (30/5)*Math.floor( startTime *5/30 );
-	alert(startTime);
-	x.attr("rowspan","" + endTime-startTime);
-	x.attr("colspan","" + endDay-startDay);
-	x.css("backgroundColor","gray");
-	
+		var x = $("#day" + startDay + "time" + startTime);
+		startTime = (30/5)*Math.floor( startTime *5/30 );
+		alert(startTime);
+		x.attr("rowspan","" + endTime-startTime);
+		x.attr("colspan","" + endDay-startDay);
+		x.css("backgroundColor","gray");
+		
+		
+		var yPix = $("td").height() * (endTime - startTime);
+		var xPix = $("td").width() * (endDay - startDay) + 63;
+		var startY = startTime - 90;
+		var startX;
+		if (startTime % 6 != 0) {
+			startX = 73 * (startDay - 1) + 62;
+		} else {
+			startX = 73 * startDay + 62;
+		}
+		
+		var newClass = $("<div></div>");
+		newClass.css({"position":"relative", "left":"startX, "top":"startY", "height":"yPix", "width":"xPix")
+		var info = $("<p>Class ID</p>");
+		newClass.append(info);
+		$(tbody).append(newClass);	
     }
 
     function addOther(startDay, startTime, endDay, endTime) {
