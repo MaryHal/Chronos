@@ -172,20 +172,7 @@ $(document).ready(function() {
 		startY = startY - (startY % 30);
 		
 		var startX = 72 * (startDay - 1) + 110;
-		/*if (startTime % 6 != 0) {
-			startX = 72 * (startDay);
-		} else {
-			startX = 72 * startDay;
-		}*/
-		
-		
-<<<<<<< HEAD
-		var newClass = $("<div></div>");
-		newClass.css({"position":"relative", "left":"startX", "top":"startY", "height":"yPix", "width":"xPix"});
-		var info = $("<p>Class ID</p>");
-		newClass.append(info);
-		$("tbody").append(newClass);	
-=======
+
 		var newClass = document.createElement("div");
 		newClass.className = "chicken";
 		newClass.style.position = "absolute";
@@ -197,7 +184,6 @@ $(document).ready(function() {
 		var info = document.createElement("p");
 		newClass.appendChild(info);
 		document.getElementById("bounds").appendChild(newClass);	
->>>>>>> Messing with block on visual
     }
 
     function addOther(startDay, startTime, endDay, endTime) {
@@ -375,7 +361,7 @@ $(document).ready(function() {
       $('#class_lookup_details');
       while(result[i]) {
 
-          var myClass = result[i]["id"];
+          var classId = result[i]["id"];
           var shortname = result[i]["sname"];
           var section = result[i]["sec"];
           var classType = result[i]["type"];
