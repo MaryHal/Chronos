@@ -24,7 +24,10 @@ if (isset($_POST["data"]))
     $success = executeAction($action, $userID, $classes);
 
     // Success Output!
-    print("{\"success\":\"User data successfully changed.\"}");
+    if ($success)
+    {
+        print("{\"success\":\"User data successfully changed.\"}");
+    }
 }
 else
 {

@@ -1,14 +1,5 @@
 <?php
   $database = connectdb();
-  $id = 0;
-  $classes = getUserClasses($database, $id, "2013", "SPR");
-  foreach($classes as $class) {
-    $info = getAllClassInfo($database, $class);
-    print_r($info);
-    print "<br />";
-    print "<br />";
-  }
-
 
   function connectdb() {
     $database = new PDO("mysql:dbname=chronos;host=chronos.db", "iocx", "HelloWorld");
@@ -43,8 +34,8 @@
    * {id, sname, fname, sec, qtr, yr, iid, credits, reqs, type,
    *  details, instructor, textbooks}
    */
-  function getAllClassInfo($database, $id) {
-    $id = $database->quote($id);
+  function getAllClassInfo($database, $classid) {
+    $id = $database->quote($classid);
     $query = 
       "SELECT id, sname, fname, sec, qtr, yr, iid, credits, reqs, type
        FROM Classes
@@ -62,10 +53,10 @@
   /*
    * Returns an array of {day, stime, etime, loc}.
    */
-  function getClassDetails($database, $id) {
+  function getClassDetails($database, $classid) {
     $query =
       "SELECT day, stime, etime, loc FROM ClassDetails
-      WHERE cid = ${id};";
+      WHERE cid = ${classid};";
     $results = $database->query($query);
     $details = array();
     foreach($results as $detail) {
@@ -118,25 +109,18 @@
        WHERE $uid = UserClasses.uid AND $classid = UserClasses.cid;";
     $database->query($query);
   }
+
+function test()
+{
+  $id = 0;
+  $classes = getUserClasses($database, $id, "2013", "SPR");
+  foreach($classes as $class) {
+    $info = getAllClassInfo($database, $class);
+    print_r($info);
+    print "<br />";
+    print "<br />";
+  }
+}
+
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

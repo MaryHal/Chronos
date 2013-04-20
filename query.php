@@ -1,11 +1,26 @@
 <?php
-$user_name = "iocx";
-$password = "HelloWorld";
-$database = "172.17.0.172";
-$server = "chronos.db";
+header('Content-Type: application/json');
+include("database.php");
 
-mysql_connect($server, $user_name, $password);
+$_POST["data"] = '{"userID" : 1,
+                   "year" : "2013",
+                   "quarter" : "SPR"}';
 
-print "Connection to the Server opened";
+// Test if there is json data.
+if (isset($_POST["data"]))
+{
+    $data = $_POST["data"];
+    $json = json_decode($data, true);
+    $userID = $json["userID"];
+
+    // Query to retrieve user data
+    $classes = getUserClasses($database, $userID, $json["year"], $json["quarter"]);
+    echo json_encode($classes, JSON_FORCE_OBJECT);
+}
+else
+{
+    // Uh oh
+    print("{\"error\":\"User data could not be changed.\"}");
+}
 
 ?>
