@@ -1,5 +1,6 @@
 <?php
   $database = connectdb();
+  getClassByQuery($database, $a);
 
   function connectdb() {
     $database = new PDO("mysql:dbname=chronos;host=chronos.db", "iocx", "HelloWorld");
@@ -11,10 +12,17 @@
   function getClassByQuery($database, $qry) {
     $qry = $database->quote($qry);
     $query =
-      "SELECT * FROM Classes c, Instructors i
+      "SELECT c.id FROM Classes c, Instructors i
       WHERE c.iid = i.id
       AND (c.sname Like '%${qry}%' OR c.fname LIke '%${qry}%' OR i.lname Like '%${qry}%' OR i.fname LIke '%${qry}%');";
     $result = $database->query($query);
+    echo "here";
+    print_r($result);
+    foreach($result as $class) {
+      echo "nowhere";
+      echo $class["id"];
+      getAllClassInfo($database, $class["id"]);
+    }
     return $result;
   }
 
