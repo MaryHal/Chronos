@@ -15,6 +15,7 @@ if (isset($_POST["data"]))
 
     // Query to modify tables
 
+
     // Success Output!
     print("User data successfully updated!");
 }
