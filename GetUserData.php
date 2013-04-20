@@ -12,13 +12,10 @@ if (isset($_POST["data"]))
     $userID = $json->{"userID"};
 
     // Query to retrieve user data
-    $classes = getUserClasses($database, $userID);
-    echo json_encode($classes, JSON_FORCE_OBJECT);
+    /* $classes = getAllClassInfo($database, $userID); */
+    /* echo json_encode($classes, JSON_FORCE_OBJECT); */
 }
 else
 {
-    // Uh oh
-    print("{\"error\":\"User data could not be changed.\"}");
+    print("{\"error\":\"Could not retrieve user data.\"}");
 }
-
-?>
