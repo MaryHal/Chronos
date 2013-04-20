@@ -9,7 +9,6 @@ var endX = 0;
 var endY = 0;
 var currentQtr = "SPR";
 var currentYear = 2013;
-var user = 0;
 
 var classIds = [];
 
@@ -48,7 +47,6 @@ $(document).ready(function() {
 	
 	$("#edit_buddies").css("display","block");
 	$("#edit_schedule").css("display","none");
-	
 
     }
 

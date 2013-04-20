@@ -26,6 +26,7 @@
         <div id="fb-root"></div>
         <script>
           friendList = 0;
+          user = 0;
           // Additional JS functions here
           window.fbAsyncInit = function() {
             FB.init({
@@ -95,10 +96,23 @@
           });
           visualRequest.done(friendSuccess);
           visualRequest.fail(friendError);
+
+          var meRequest = $.ajax({
+            url: "https://graph.facebook.com/me?access_token=" + token,
+            type: "get",
+            dataType : "json",
+          });
+          meRequest.done(meSuccess);
+          meRequest.fail(friendError);
+
         }
 
         function friendSuccess(result, a, b) {
           friendList = result;
+        }
+
+        function meSuccess(result, a, b) {
+          user = result["id"];
         }
 
         function friendError(jqxhr, type, error) {
