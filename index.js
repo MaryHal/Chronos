@@ -248,7 +248,6 @@ $(document).ready(function() {
     });
 
     $("#buddy_search").keyup(function() {
-      alert(user);
 
 	var query = $('#buddy_search').val()
 	var newList = getFriends(query);
