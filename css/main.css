@@ -1,11 +1,14 @@
 /* MAIN CSS SHEET */
 
 table {
-;
-}
-tr {
 
- 
+border:3px solid #454545;
+}
+
+.table tr td {
+    border: 0;
+    height:3px;
+    padding:2px;
 }
 
 .container {
