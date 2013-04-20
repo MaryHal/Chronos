@@ -201,7 +201,7 @@
 			
 		    <div class="buddies">
 		    	<ul class="buddylist">
-		    		<li id="buddy1">Kevin Bacon</li>
+		    		
 		    	</ul>
 		    </div>			
 
@@ -209,14 +209,23 @@
 			</div>
 		      <div id="edit_buddies">
 		      <form class="form-search">
-			<input type="text" placeholder="Find Friends!" class="input-large search-query" id="buddy_search">
-			  <i type="submit" class="icon-chevron-down">
-			    </i>
+			<input type="text" placeholder="Find Friends!" class="input-large search-query" id="buddy_search" autocomplete="off">
+<div class="btn-group">
+			  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" id="drop_the_bass">
+										       <i class="icon-chevron-down"></i>
+											 </a>  
+<ul id="friends_list" class="dropdown-menu pull-right">
+
+  </ul>
+
+</div>
+
+			    
 			<button type="submit" id="overlap" class="btn btn-primary">Overlap Schedules</button>
 			</form>    
 		    <div class="buddies">
 		    	<ul class="buddylist">
-		    		<li id="buddy1">Kevin Bacon</li>
+		    		
 		    	</ul>
 		    </div>
 

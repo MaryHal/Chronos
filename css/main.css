@@ -21,17 +21,17 @@ h1, #subtitle {
 }
 
 .buddies {
-    margin: 30px;
-    float: right;
+
+
 }
 
 .buddylist {
-    padding: 10px;
+
     background-color: rgb(275, 150, 150);
     border-radius: 15px;
     list-style: none;
-    margin-right: 200px;
-    padding: 10px;
+
+
 }
 
 #buddy1 {

@@ -20,6 +20,7 @@ $(document).ready(function() {
     $("#edit").click(editSchedule);
     $("#save").click(editBuddies);
 
+
     var visualRequest = $.ajax({
         url: "http://theinfiniteset.net/Chronos/query.php",
          type: "post",
@@ -248,29 +249,34 @@ $(document).ready(function() {
     });
 
     $("#buddy_search").keyup(function() {
-      alert(user);
+
+	var elements = $("#friends_list").children();
+	elements.css("display","block");
+
+	$(".btn-group").addClass("open");
+	if($("#buddy_search").val() == "")
+		    $(".btn-group").removeClass("open");
+
+
 
 	var query = $('#buddy_search').val()
 	var newList = getFriends(query);
 	var i = 0;
-	if($("#buddy_details")) 
-	    $("#buddy_details").remove();
-
-//	} else {
-	    var div = $('<div id="buddy_details">');
-	    $("#buddy_details").html("");
-//	}
+	    var list = $("#friends_list")
+	    list.html("");
 	while(newList[i]) {
 
-	    var friend = $('<div id='+"friend_"+newList[i]["id"]+'>');
+	    var friend = $('<li id='+"friend_"+newList[i]["id"]+'>');
 	    friend.html(newList[i]["name"]);
-	    div.append(friend);
+
+	    if(i < 20) 
+	    list.append(friend);
+	    
 	    if(i == 0) {
 		friend.addClass("first_friend");
 	    }
 	    i++;
 	}
-	$("#edit_buddies").append(div);
     });
 
     $("#overlap").click(function() {
