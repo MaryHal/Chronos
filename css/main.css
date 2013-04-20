@@ -6,9 +6,10 @@ border:3px solid #454545;
 }
 
 .table tr td {
+   text-align:center;
     border: 0;
-    height:3px;
-    padding:2px;
+    height:2px;
+    padding:1px;
 }
 
 .container {
