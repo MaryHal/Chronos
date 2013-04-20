@@ -244,12 +244,9 @@ $(document).ready(function() {
         var friend = friends[i];
         var friendName = friend["name"];
         if (name.toLowerCase() == friendName.substring(0, length).toLowerCase()) {
-          alert(friendName.substring(0, length));
           newList.push(friend);
         }
       }
-      alert('here');
-      alert (newList);
       return newList;
     }
 
