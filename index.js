@@ -338,6 +338,7 @@ $(document).ready(function() {
   }
 
   function addSuccess(results, a, b) {
+    classIds = [];
     alert("success");
   }
 
@@ -348,13 +349,14 @@ $(document).ready(function() {
       $('#class_lookup_details');
       while(result[i]) {
 
-          var classId = result[i]["id"];
+          var myClass = result[i]["id"];
           var shortname = result[i]["sname"];
           var section = result[i]["sec"];
           var classType = result[i]["type"];
           var button = $('<button>').text(shortname + "" + section + "" + classType);
+          button.id = myClass;
 	  
-          button.click( function() { addClassToList(classId); } );
+          button.click( function() { addClassToList($(this).id); } );
           $('#completion').append(button);
 	  i++;
       }
