@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 $data = null;
 if (!isset($_GET["data"]))
 {
@@ -8,8 +10,15 @@ else
 {
     $data = json_decode($_GET["data"]);
 }
-header('Content-type: text/javascript');
-echo prettyPrintJSON($data);
+if ($data != null)
+{
+    /* echo prettyPrintJSON($data); */
+    echo $data;
+}
+else
+{
+    print("{\"error\":\"Data was not received.\"}");
+}
 
 
 function get_data($url)
