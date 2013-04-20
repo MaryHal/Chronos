@@ -1,7 +1,24 @@
 /* MAIN CSS SHEET */
 
-.span1 {
-    text-align:center;
+table {
+;
+}
+tr {
 
+ 
+}
 
+.container {
+
+}
+
+.table th {
+   text-align:center;
+   background-color: #989898 ;
+   max-width:40px;
+
+}
+
+#times {
+    background-color:gray;
 }

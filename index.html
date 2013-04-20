@@ -8,83 +8,423 @@
     <!-- Bootstrap stuff -->
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+      <link href="bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
 
-    <title>Welcome to Chronos</title>
-  </head>
+	<title>Welcome to Chronos</title>
+      </head>
 
-  <body>
-    <header>
-      Chronos
-    </header>
-    <div class="Container">
-              <div class="tabbable"> <!-- Only required for left/right tabs -->
-                        <ul class="nav nav-tabs">
-                                  <li class="active"><a href="#tab1" data-toggle="tab">Visual Schedule</a></li>
-                                  <li><a href="#tab2" data-toggle="tab">Find Study Buddies</a></li>
-                        </ul>
-                        <div class="tab-content">
-                                  <div class="tab-pane active" id="tab1">
-				    <div class="row-fluid" id="days">
-				      <div class="span1 btn" id="sunday">
-					Sunday
-				      </div>
-				      <div class="span1 btn" id="monday">
-					Monday
-				      </div>
-				      <div class="span1 btn" id="tuesday">
-					Tuesday
-				      </div>
-				      <div class="span1 btn" id="wednesday">
-					Wednesday
-				      </div>
-				      <div class="span1 btn" id="thursday">
-					Thursday
-				      </div>
-				      <div class="span1 btn" id="friday">
-					Friday
-				      </div>
-				      <div class="span1 btn" id="saturday">
-					Saturday
-				      </div>
-				    </div>
+      <body>
+	<h1>Welcome to Chronos</h1>
+	<h4>Matching schedules for Huskies</h4>
+	<div class="Container">
+          <div class="tabbable"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab1" data-toggle="tab">Visual Schedule</a></li>
+              <li><a href="#tab2" data-toggle="tab">Find Study Buddies</a></li>
+            </ul>
+            <div class="tab-content">
+	      <div class="tab-pane active" id="tab1">
+		<div class="container-fluid" id="schedule">
+		  <div class="row-fluid">
+		    <div class="span7">
+                      <h4 id="current_quarter">Spring 2013</h4>
+		      <table class="table table-striped" id="days">
+			<thead>
+			  <tr>
+			    <th class="day" id="times">
+			      Time
+			    </th>
+			    <th class="day" id="sunday">
+			      Sunday
+			    </th>
+			    <th class="day" id="monday">
+			      Monday
+			    </th>
+			    <th class="day" id="tuesday">
+			      Tuesday
+			    </th>
+			    <th class="day" id="wednesday">
+			      Wednesday
+			    </th>
+			    <th class="day" id="thursday">
+			      Thursday
+			    </th>
+			    <th class="day" id="friday">
+			      Friday
+			    </th>
+			    <th class="day" id="saturday">
+			      Saturday
+			    </th>
+			  </tr>
+			</thead>
+                        <tr class="time">
+                          <td>
+			    9:30
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+			</tr>
+                        <tr class="time">
+                          <td>
+			    10:00
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+			    10:30
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+			    11:00
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+			    11:30
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+			    12:00
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+			    12:30
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr class="time">
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+		      </table>
+		    </div>
+		  </div>
+		</div>
+	      </div>
 
-                                  <p>Spring 2013</p>
-                                  </div>
-                                  <div class="tab-pane" id="tab2">
-                                  <p>I NEED HELP.</p>
-                                  </div>
-                        </div>
+              <div class="tab-pane" id="tab2">
+                <p>I NEED HELP.</p>
               </div>
-      <div class="Header">
+            </div>
+          </div>
+	  
+	  <div class="Menu">
+            <ul id="nav">
+              <li>menu item</li>
+              <li>menu item</li>
+              <li>menu item</li>
+              <li>menu item</li>
+              <li>menu item</li>
+              <li>menu item</li>
+            </ul>
+	  </div>
 
-      </div>
-     
-      <div class="Menu">
-        <ul id="nav">
-          <li>menu item</li>
-          <li>menu item</li>
-          <li>menu item</li>
-          <li>menu item</li>
-          <li>menu item</li>
-          <li>menu item</li>
-        </ul>
-      </div>
+	  <div class="Body">
 
-      <div class="Body">
+	  </div>
+	</div>
 
-      </div>
-    </div>
+      </body>
 
-  </body>
-
-  <footer>
-    <div class="Footer">
-      <b>Copyright - 2013</b>
-    </div>
-  </footer>
-</html>
+      <footer>
+	<div class="Footer">
+	  <b>Copyright - 2013</b>
+	</div>
+      </footer>
+    </html>
