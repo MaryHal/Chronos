@@ -253,9 +253,11 @@ $(document).ready(function() {
     $("#buddy_search").keyup(function() {
       var query = $('#buddy_search').val()
       newList = getFriends(query);
-    }
+    });
 
-    $("#overlap")
+    $("#overlap").click(function() {
+      alert('test');
+    });
 
     function getFriends(name) {
       var length = name.length;
