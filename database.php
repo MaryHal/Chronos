@@ -8,6 +8,16 @@
     return $database;
   }
 
+  function getClassByQuery($database, $qry) {
+    $qry = $database->quote($qry);
+    $query =
+      "SELECT * FROM Classes c, Instructors i
+      WHERE c.iid = i.id
+      AND (c.sname Like '%${qry}%' OR c.fname LIke '%${qry}%' OR i.lname Like '%${qry}%' OR i.fname LIke '%${qry}%');";
+    $result = $database->query($query);
+    return $result;
+  }
+
   /*
    * Returns an array of class id's.
    */
